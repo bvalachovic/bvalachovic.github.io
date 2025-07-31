@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <title>Brian Valachovic - Product Design & UX Portfolio</title>
+    <link rel="icon" type="image/png" href="public/assets/icons/favicon.png" />
+    <meta
+      name="description"
+      content="Professional portfolio of Brian Valachovic, a Product Designer with 30 years of experience in UX/UI, graphic design, and marketing."
+    />
+    <meta
+      property="og:title"
+      content="Brian Valachovic - Product Design & UX Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Professional portfolio of Brian Valachovic, a Product Designer with 30 years of experience in UX/UI, graphic design, and marketing."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Oswald:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: 'Crimson Text', serif;
+        background-color: #f5f7fa;
+        color: #1f2937;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Oswald', sans-serif;
+        font-weight: 500;
+        letter-spacing:-0.045em;
+      }
+      
+      .nav-link {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+      
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: #4f46e5;
+        transition: width 0.3s ease;
+      }
+      
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      
+      .hero-image-figure {
+        max-height: 500px;
+        object-fit: contain;
+        margin: 0 auto;
+      }
+      
+      .portfolio-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .portfolio-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-4 py-2 flex items-center justify-between">
+            <div class="flex items-center">
+                <h1 class="text-2xl font-bold text-gray-900">Brian</h1>
+                <div class="relative h-12 w-12 rounded-full bg-black flex items-center justify-center mx-2 overflow-hidden">
+                    <img src="public/assets/caricaturePortraitTransparent.png" alt="Brian Valachovic" class="h-10 w-10 rounded-full object-cover" />
+                </div>
+                <h1 class="text-2xl font-bold text-gray-900">Valachovic</h1>
+            </div>
+            <nav class="flex items-center">
+                <ul class="flex space-x-10">
+                    <li><a href="#hero" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-medium">Home</a></li>
+                    <li><a href="#portfolio" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-medium">Portfolio</a></li>
+                    <li><a href="#about" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-medium">About</a></li>
+                    <li><a href="#contact" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-medium">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="hero2" class=" bg-gradient-to-br from-blue-400 to-white-100">
+        <div class="container mx-auto px-4 py-2 flex items-center justify-between">
+
+            <div class="relative z-10 flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 max-w-full sm:max-w-xl md:max-w-4xl lg:max-w-3xl">
+                <section id="portfolio">
+                    <div class="mx-auto px-6">
+                        <h1 class="text-8xl font-extrabold text-gray-900">Portfolio</h1>
+                         <div class="flex items-center justify-center" style="margin-top: -1rem;">
+                            <h1 class="text-2xl font-bold text-gray-900">Brian</h1>
+                            <div class="relative h-12 w-12 rounded-full bg-black flex items-center justify-center mx-2 overflow-hidden">
+                                <img src="public/assets/caricaturePortraitTransparent.png" alt="Brian Valachovic" class="h-10 w-10 rounded-full object-cover" />
+                            </div>
+                            <h1 class="text-2xl font-bold text-gray-900">Valachovic</h1>
+                        </div>
+                    </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-80">
+                        <div class="portfolio-card min-w-[20rem] bg-white rounded-3xl shadow-2xl overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                            <div class="p-20 flex flex-col items-center justify-center h-[32rem]">
+                            <h3 class="text-5xl font-bold text-gray-900 mb-10">Coming Soon</h3>
+                            <p class="text-2xl text-gray-600 mb-4 text-center">Project details will appear here.</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-card min-w-[20rem] bg-white rounded-3xl shadow-2xl overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                            <div class="p-20 flex flex-col items-center justify-center h-[32rem] w-full">
+                            <h3 class="text-5xl font-bold text-gray-900 mb-10">Coming Soon</h3>
+                            <p class="text-2xl text-gray-600 mb-4 text-center">Project details will appear here.</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-card min-w-[20rem] bg-white rounded-3xl shadow-2xl overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                            <div class="p-20 flex flex-col items-center justify-center h-[32rem] w-full">
+                            <h3 class="text-5xl font-bold text-gray-900 mb-10">Coming Soon</h3>
+                            <p class="text-2xl text-gray-600 mb-4 text-center">Project details will appear here.</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-card min-w-[20rem] bg-white rounded-3xl shadow-2xl overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                            <div class="p-20 flex flex-col items-center justify-center h-[32rem] w-full">
+                            <h3 class="text-5xl font-bold text-gray-900 mb-10">Coming Soon</h3>
+                            <p class="text-2xl text-gray-600 mb-4 text-center">Project details will appear here.</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="fixed inset-0 z-0 flex items-center justify-end pr-8 sm:pr-16 md:pr-24 lg:pr-48 pt-18 sm:pt-18 md:pt-18 lg:pt-18 opacity-100 hidden md:flex">
+                <img src="public/assets/caricatureFullLengthTransparentEnhanced.png"
+                    alt="Caricature of BrAIn, the AI Agent"
+                    class="w-64 sm:w-1/4 md:w-1/4 lg:w-1/4 xl:w-1/4 h-auto object-contain transform translate-x-1/4"
+                    onerror="this.onerror=null;this.src='https://placehold.co/400x400/CCCCCC/333333?text=Image+Error';"
+                >
+            </div>
+
+        </div>
+    </main>
+    <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+            <h2 class="text-2xl font-bold mb-2">Brian Valachovic</h2>
+            <p class="text-gray-400">Product Designer</p>
+        </div>
+        
+        <div class="flex space-x-6">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <span class="sr-only">Twitter</span>
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+            </svg>
+            </a>
+            
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <span class="sr-only">LinkedIn</span>
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+            </svg>
+            </a>
+            
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <span class="sr-only">GitHub</span>
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+            </svg>
+            </a>
+        </div>
+        </div>
+        
+        <div class="mt-8 border-t border-gray-800 pt-8 text-center text-gray-400">
+        <p>&copy; ${currentYear} Brian Valachovic. All rights reserved.</p>
+        </div>
+    </div>
+    </footer>
+  </body>
+</html>
