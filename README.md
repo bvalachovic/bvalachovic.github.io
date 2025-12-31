@@ -30,6 +30,48 @@ Brian Valachovic | Product Leader
 **Edit case study?** Edit the .md file directly
 Everything is in easy-to-edit Markdown and includes. You're all set!
 
+## Contact Form with Formspree
+AJAX form submission with comprehensive validation. Here's how it works
+:
+### Features Implemented
+1. Email Validation
+- Validates proper email format using regex
+- Shows error if invalid
+- Focuses the email field for correction
+2. Phone Validation
+- Strips all non-numeric characters (allows formatting like (555) 123-4567)
+- Validates length is 10-12 digits
+- Only validates if phone is provided (it's optional)
+3. User Experience Improvements
+- Loading State: Button shows "Sending..." while submitting
+- No Page Reload: Form submits via AJAX
+- Inline Messages: Success/error messages appear above the submit button
+- Color-Coded: Green for success, red for errors
+- Auto-Clear: Form clears on successful submission
+- Focus Management: Automatically focuses invalid fields
+4. Error Handling
+- Network errors handled gracefully
+- **Formspree** errors displayed to user
+- Button re-enables after submission (success or failure)
+
+### How It Works
+**Valid submission:**
+- User fills out form
+- Click "Send Message"
+- Validation checks pass
+- Button changes to "Sending..."
+- Form submits to Formspree via AJAX
+- Green success message appears
+- Form clears
+- Button returns to normal
+**Invalid submission:**
+- Validation fails (bad email or phone)
+- Red error message appears
+- Focus moves to invalid field
+- User can correct and resubmit
+
+Test this locally or push to GitHub Pages.
+
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=bvalachovic&label=Profile%20views&color=0e75b6&style=flat" alt="bvalachovic" /> </p>
 
