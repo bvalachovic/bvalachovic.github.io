@@ -1,31 +1,57 @@
 # bvalachovic.github.io
-Brian Valachovic's portfolio website showcasing product design, user experience (UX), user interface UI), product management, and more 
+Brian Valachovic | Product Leader
 
+## Jekyll Setup
 
-<h1 align="center">Hi 👋, I'm Brian.</h1>
-<h3 align="center">Passionate about digital products, user experience, and solving complex user interface challenges.</h3>
+### Structure:
+
+├── _config.yml              (Jekyll configuration with collections)
+├── _includes/
+│   └── header.html         (Reusable header component)
+├── _layouts/
+│   └── case-study.html     (Template for case study pages)
+├── _case_studies/          (Your case study content in Markdown)
+│   ├── 1-2m-question.md
+│   ├── velocity-gain.md
+│   ├── printed-page.md
+│   └── ai-pm-chatbot.md
+└── index.html              (Main page with dynamic case study list)
+
+### How It Works:
+- Push changes to GitHub
+- GitHub Pages builds automatically (1-2 minutes)
+- View at https://bvalachovic.github.io
+
+### Adding Content:
+**New case study?** Just add a .md file to _case_studies/
+
+**Edit header?** Update _includes/header.html
+
+**Edit case study?** Edit the .md file directly
+Everything is in easy-to-edit Markdown and includes. You're all set!
+
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=bvalachovic&label=Profile%20views&color=0e75b6&style=flat" alt="bvalachovic" /> </p>
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=bvalachovic" alt="bvalachovic" /></a> </p>
 
-- 🔭 I’m currently working on [a portfolio site](https://bvalachovic.github.io)
+- 🔭 I’m currently working on [this Jekyll portfolio site](https://bvalachovic.github.io)
 
 - 🌱 I’m currently learning **Jekyll**
 
 - I'm also working on [a chrome extension for GitLab users](https://github.com/bvalachovic/gitlab-issue-bar)
 
-- 👨‍💻 All of my projects are available at [https://github.com/bvalachovic/](https://github.com/bvalachovic/)
+- 👨‍💻 All of my projects are available at [https://github.com/bvalachovic/](https://github.com/bvalachovic/). Some are PPRIVATE.
 
-- 📝 I regularly write articles on [Hmmm. Should I be writing more articles?](Hmmm. Should I be writing more articles?)
+- 📝 Articles & Case Studies soon to come on [bvalachovic.github.io](https://bvalachovic.github.io)
 
 - 💬 Ask me about **product management, ux design, ux analytics, accessibility of user interfaces**
 
-- 📫 How to reach me **bvalachovic@outlook.com**
+- 📫 How to reach me [bvalachovic.github.io/#contact](https://bvalachovic.github.io/#contact)
 
-- 📄 Know about my experiences [https://www.linkedin.com/in/bvalachovic/](https://www.linkedin.com/in/bvalachovic/)
+- 📄 My LinkedIn profile [https://www.linkedin.com/in/bvalachovic/](https://www.linkedin.com/in/bvalachovic/)
 
-- ⚡ Fun fact **I still like physical media. I now have over 1200 cd's & lp's, plus a library of books I haven't counted.**
+- ⚡ Fun fact **I cannot part with my physical media. I now have over 1200 cd's & lp's, plus a library of over 500 books**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
