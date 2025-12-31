@@ -6,15 +6,15 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1"
     />
-    <title>Brian Valachovic - Product Design & UX Portfolio</title>
+    <title>Brian Valachovic - Product Leader with 30+ years of experience</title>
     <link rel="icon" type="image/png" href="public/assets/icons/favicon.png" />
     <meta
       name="description"
-      content="Professional portfolio of Brian Valachovic, a Product Designer with 30 years of experience in UX/UI, graphic design, and marketing."
+      content="Professional Product Leader portfolio of Brian Valachovic, a Product Leader who's been designing, coding, and transforming cultures for over 30 years."
     />
     <meta
       property="og:title"
-      content="Brian Valachovic - Product Design & UX Portfolio"
+      content="Brian Valachovic - Product Leader with 30+ years of experience"
     />
     <meta
       property="og:description"
@@ -83,6 +83,19 @@
         border-radius: 3px;
         font-size: 0.9em;
       }
+      .caricature {
+        position: fixed;
+        top: 2.5rem;
+        right: -4.0rem;
+        z-index: 40;
+        display: none !important;
+      }
+
+      @media (min-width: 1024px) {
+        .caricature {
+          display: block !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -91,46 +104,69 @@
             <div class="flex items-center justify-between">
                 <div class="flex flex-col">
                     <div class="flex items-center">
-                        <h1 class="text-2xl font-bold text-gray-900">Brian</h1>
-                        <div class="relative h-12 w-12 rounded-full bg-black flex items-center justify-center mx-2 overflow-hidden">
-                            <img src="public/assets/caricaturePortraitTransparent.png" alt="Brian Valachovic" class="h-10 w-10 rounded-full object-cover" />
+                        <div class="relative h-12 w-12 rounded-full bg-indigo-600 border-gray-900 border-4 ml-2 mr-1 overflow-hidden">
+                            <img src="public/assets/caricaturePortraitTransparent.png" alt="Brian Valachovic caricature" class="h-10 w-10 rounded-full object-cover" />
                         </div>
+                        <h1 class="text-2xl font-bold text-indigo-600 mr-1">Brian</h1>
                         <h1 class="text-2xl font-bold text-gray-900">Valachovic</h1>
                     </div>
+                    <span class="text-gray-600 italic text-sm ml-16" style="margin-top: -0.875rem;">Product Leadership</span>
                 </div>
-                <nav class="flex items-center">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center">
                     <ul class="flex space-x-10">
-                        <li><a href="#hero" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-medium">Home</a></li>
-                        <li><a href="#portfolio" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-medium">Case Studies</a></li>
-                        <li><a href="#philosophy" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-medium">Philosophy</a></li>
-                        <li><a href="#methodology" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-medium">Methodology</a></li>
-                        <li><a href="#about" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-medium">About</a></li>
-                        <li><a href="#contact" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-medium">Contact</a></li>
+                        <li><a href="#home" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold text-center">Home</a></li>
+                        <li><a href="#portfolio" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold text-center">Case Studies</a></li>
+                        <li><a href="#philosophy" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold text-center">Philosophy</a></li>
+                        <li><a href="#methodology" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold text-center">Methodology</a></li>
+                        <li><a href="#about" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold text-center">About</a></li>
+                        <li><a href="#contact" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold text-center">Contact</a></li>
                     </ul>
                 </nav>
             </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+            <nav class="container mx-auto px-4 py-4">
+                <ul class="flex flex-col space-y-4">
+                    <li><a href="#home" class="block text-gray-600 hover:text-indigo-600 text-base font-semibold">Home</a></li>
+                    <li><a href="#portfolio" class="block text-gray-600 hover:text-indigo-600 text-base font-semibold">Case Studies</a></li>
+                    <li><a href="#philosophy" class="block text-gray-600 hover:text-indigo-600 text-base font-semibold">Philosophy</a></li>
+                    <li><a href="#methodology" class="block text-gray-600 hover:text-indigo-600 text-base font-semibold">Methodology</a></li>
+                    <li><a href="#about" class="block text-gray-600 hover:text-indigo-600 text-base font-semibold">About</a></li>
+                    <li><a href="#contact" class="block text-gray-600 hover:text-indigo-600 text-base font-semibold">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <main>
       <!-- Home Section -->
-      <section id="home" class="pt-20 text-base bg-gradient-to-br from-blue-400 to-white-100 min-h-screen flex items-center">
+      <section id="home" class="pt-40 pb-40 text-base bg-gradient-to-br from-blue-400 to-white-100 min-h-screen-lg flex items-center">
         <div class="container mx-auto px-4">
-          <h1 class="text-8xl font-extrabold text-gray-900 mb-10">
+          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-gray-900 mb-10">
             Product Leader Who <code>Codes</code>.<br />
             <span class="text-indigo-800">Designer Who Ships.</span><br />
             Consultant Who Transforms Culture.
           </h1>
-          <p class="text-3xl text-gray-800 mb-10">
+          <p class="text-xl sm:text-2xl md:text-3xl text-gray-800 mb-10">
             Most people pick one lane. I've spent 30 years refusing to.
           </p>
-          <a href="#portfoliio" class="inline-block bg-black text-white px-6 py-3 rounded-full text-xl font-semibold hover:bg-indigo-700 transition-colors mb-10 mr-4">
+          <a href="#portfoliio" class="inline-block bg-black text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-700 transition-colors mb-4 mr-2 sm:mb-10 sm:mr-4">
             Case Studies
           </a>
-          <a href="#contact" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-full text-xl font-semibold hover:bg-indigo-700 transition-colors mb-10 mr-4">
+          <a href="#contact" class="inline-block bg-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-700 transition-colors mb-4 mr-2 sm:mb-10 sm:mr-4">
             Philosophy
           </a>
-          <a href="#portfolio" class="inline-block bg-gray-200 text-gray-800 px-6 py-3 rounded-full text-xl font-semibold hover:bg-indigo-300 transition-colors mb-10">
+          <a href="#portfolio" class="inline-block bg-gray-200 text-gray-800 px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-300 transition-colors mb-4 sm:mb-10">
             Methodology
           </a>
         </div>
@@ -257,17 +293,35 @@
         </div>
         
         <div class="mt-8 border-t border-gray-800 pt-8 text-center text-gray-400">
-        <p>&copy; ${currentYear} Brian Valachovic. All rights reserved.</p>
+        <p>&copy; 2026 Brian Valachovic. All rights reserved.</p>
         </div>
     </div>
     </footer>
 
     <!-- Fixed Caricature Image -->
-    <div style="position:fixed; top:2.5rem; right:-4.0rem; z-index:40;">
+    <div class="caricature">
         <img src="public/assets/caricatureFullLengthTransparentEnhanced.png"
             alt="Caricature of Brian, the Veteran Product Leader"
             onerror="this.onerror=null;this.src='https://placehold.co/400x400/CCCCCC/333333?text=Image+Error';"
         >
     </div>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
   </body>
 </html>
