@@ -83,6 +83,14 @@
         border-radius: 3px;
         font-size: 0.9em;
       }
+      .caricature-mobile {
+        position: absolute;
+        width: 6rem;
+        height: auto;
+        right: -1.0rem;
+        bottom: 21.25rem;
+        display: inline-block;
+      }
       .caricature {
         position: fixed;
         top: 2.5rem;
@@ -90,7 +98,6 @@
         z-index: 40;
         display: none !important;
       }
-
       @media (min-width: 1024px) {
         .caricature {
           display: block !important;
@@ -122,12 +129,12 @@
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex items-center">
                     <ul class="flex space-x-10">
-                        <li><a href="#home" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold text-center">Home</a></li>
-                        <li><a href="#portfolio" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold text-center">Case Studies</a></li>
-                        <li><a href="#philosophy" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold text-center">Philosophy</a></li>
-                        <li><a href="#methodology" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold text-center">Methodology</a></li>
-                        <li><a href="#about" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold text-center">About</a></li>
-                        <li><a href="#contact" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold text-center">Contact</a></li>
+                        <li><a href="#home" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">Home</a></li>
+                        <li><a href="#portfolio" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">Case Studies</a></li>
+                        <li><a href="#philosophy" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">Philosophy</a></li>
+                        <li><a href="#methodology" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">Methodology</a></li>
+                        <li><a href="#about" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">About</a></li>
+                        <li><a href="#contact" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -137,12 +144,12 @@
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
             <nav class="container mx-auto px-4 py-4">
                 <ul class="flex flex-col space-y-4">
-                    <li><a href="#home" class="block text-gray-600 hover:text-indigo-600 text-base font-semibold">Home</a></li>
-                    <li><a href="#portfolio" class="block text-gray-600 hover:text-indigo-600 text-base font-semibold">Case Studies</a></li>
-                    <li><a href="#philosophy" class="block text-gray-600 hover:text-indigo-600 text-base font-semibold">Philosophy</a></li>
-                    <li><a href="#methodology" class="block text-gray-600 hover:text-indigo-600 text-base font-semibold">Methodology</a></li>
-                    <li><a href="#about" class="block text-gray-600 hover:text-indigo-600 text-base font-semibold">About</a></li>
-                    <li><a href="#contact" class="block text-gray-600 hover:text-indigo-600 text-base font-semibold">Contact</a></li>
+                    <li><a href="#home" class="block text-gray-600 hover:text-indigo-600 text-2xl font-semibold text-center">Home</a></li>
+                    <li><a href="#portfolio" class="block text-gray-600 hover:text-indigo-600 text-2xl font-semibold text-center">Case Studies</a></li>
+                    <li><a href="#philosophy" class="block text-gray-600 hover:text-indigo-600 text-2xl font-semibold text-center">Philosophy</a></li>
+                    <li><a href="#methodology" class="block text-gray-600 hover:text-indigo-600 text-2xl font-semibold text-center">Methodology</a></li>
+                    <li><a href="#about" class="block text-gray-600 hover:text-indigo-600 text-2xl font-semibold text-center">About</a></li>
+                    <li><a href="#contact" class="block text-gray-600 hover:text-indigo-600 text-2xl font-semibold text-center">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -160,15 +167,22 @@
           <p class="text-xl sm:text-2xl md:text-3xl text-gray-800 mb-10">
             Most people pick one lane. I've spent 30 years refusing to.
           </p>
-          <a href="#portfoliio" class="inline-block bg-black text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-700 transition-colors mb-4 mr-2 sm:mb-10 sm:mr-4">
+          <a href="#portfoliio" class="inline-block bg-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-700 transition-colors mb-4 mr-2 sm:mb-10 sm:mr-4">
             Case Studies
           </a>
           <a href="#contact" class="inline-block bg-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-700 transition-colors mb-4 mr-2 sm:mb-10 sm:mr-4">
             Philosophy
           </a>
-          <a href="#portfolio" class="inline-block bg-gray-200 text-gray-800 px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-300 transition-colors mb-4 sm:mb-10">
+          <a href="#portfolio" class="inline-block bg-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-700 transition-colors mb-4 sm:mb-10">
             Methodology
           </a>
+        </div>
+        <!-- Mobile Fixed Caricature Image -->
+        <div class="caricature-mobile md:hidden z-40">
+            <img src="public/assets/caricatureFullLengthTransparentEnhanced.png"
+                alt="Caricature of Brian, the Veteran Product Leader"
+                onerror="this.onerror=null;this.src='https://placehold.co/400x400/CCCCCC/333333?text=Image+Error';"
+            >
         </div>
       </section>
 
