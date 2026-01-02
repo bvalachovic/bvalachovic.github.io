@@ -2,47 +2,52 @@
 layout: case-study
 title: "The $1.2M Question"
 subtitle: "How Evidence-Based Discovery Prevented a Year-Long Waste"
-date: 2024-06-01
-role: "Product Leader"
-company: "Enterprise SaaS Company"
+date: 2019-01-01
+role: "Product Leader & Product Designer"
+company: "Enterprise B2B SaaS Company"
 order: 1
 ---
 
 ## The Challenge
 
-The executive team was convinced they needed a complex new feature set that would take a full development year and cost $1.2M. The pressure was on to start building immediately.
+The executive team was convinced they needed to rewrite a complex validation component for a data transformation system that would take a full development year and cost approximately $1.2M. The pressure was on to start building immediately.
 
-But something didn't feel right. The assumptions weren't validated, and the customer pain points weren't clearly articulated.
+Something didn't feel right. A pattern was starting to develop.  The assumptions weren't validated, and the customer pain points weren't clearly articulated. The evidence was missing.
 
 ## The Approach
 
-Instead of jumping straight into development, I advocated for a **two-week discovery sprint**:
+Instead of jumping straight into development, I advocated for a **one-month discovery phase**:
 
-- Conducted 20+ customer interviews
+- Implemented an in-app pop-up survey
 - Analyzed existing product usage data
-- Mapped current workflows and pain points
-- Prototyped three alternative solutions
+- Conducted interviews with 5 users from top customers
+- Mapped their experiences
+- Built trust with Engineers, providing them the time they'd needed to address a few technical opportunities (~~technical debt~~) that were consistently generating support tickets
 
 ## The Discovery
 
 What we found changed everything:
 
-- **The real problem** wasn't what executives thought it was
-- Customers had a **workaround** they were already using
-- A **simpler solution** could be delivered in 6 weeks, not 12 months
-- The proposed feature would have **low adoption** based on actual user needs
+- **The real problem** wasn't what the executives thought it was:
+- Surveys and interviews yielded no mentions of this component
+- The **problem was data integrity**. Duplicate/redundant data stored in the customers' enterprise system, and then ingested again into ours created a problem: system of record (source of truth)
+- Our system had no way of knowing about any changes
+- _"I'd rather the data be invalid if it still matches what's in our system.  I can't trust your system."_ - This was an alarming quote from our first interview.  
+- Remaining interviews resulted in similar sentiment.
+- Engineers thanked me for preventing another tragic waste.
 
 ## The Outcome
 
-By investing two weeks in proper discovery:
+By investing one month in proper discovery:
 
 - **Saved $1.2M** in unnecessary development costs
-- Delivered a **better solution** in 1.5 months instead of 12
-- Achieved **87% adoption rate** (vs. projected 30% for original plan)
-- Built trust with stakeholders by showing evidence, not opinions
+- Were able to pivot and focus on the larger  **data integrity issue** customers really cared about
+- Paradigm shift - big ideas are very risky assumptions if they're not backed by evidence. Team moved from being order-takers to product thinkers. 
 
 ## Key Takeaway
 
 > Evidence-based discovery isn't about slowing down—it's about making sure you're running in the right direction.
 
 Sometimes the most valuable thing a product leader can do is **say "wait"** and **ask "why?"** before the team invests months building the wrong thing.
+
+Healthy teams debate. This isn't questioning someone's expertise.  It's asking for the evidence that reduces the risk of an assumption.

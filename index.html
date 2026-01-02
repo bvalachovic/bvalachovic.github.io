@@ -295,7 +295,7 @@
         function isValidPhone(phone) {
             // Remove all non-numeric characters
             const cleaned = phone.replace(/\D/g, '');
-            // Check if length is between 10 and 12 digits
+            // Check minimum 10 digits and maximum 12 digits
             return cleaned.length >= 10 && cleaned.length <= 12;
         }
 
@@ -330,7 +330,7 @@
 
             // Validate phone (only if provided)
             if (phone && !isValidPhone(phone)) {
-                showStatus('Phone number must be 10-12 digits.', true);
+                showStatus('Phone number must be 10 digits and no more than 12.', true);
                 document.getElementById('phone').focus();
                 return;
             }
@@ -353,7 +353,7 @@
                 });
 
                 if (response.ok) {
-                    showStatus('Thank you for reaching out! I\'ll get back to you soon.', false);
+                    showStatus('Thank you for reaching out. I\'ll be in touch soon.', false);
                     contactForm.reset();
                 } else {
                     const data = await response.json();
@@ -361,11 +361,11 @@
                         const errorMessages = data.errors.map(error => error.message).join(', ');
                         showStatus(errorMessages, true);
                     } else {
-                        showStatus('Oops! There was a problem submitting your form. Please try again.', true);
+                        showStatus('Oops! There was a problem submitting your message. Please try again.', true);
                     }
                 }
             } catch (error) {
-                showStatus('Oops! There was a problem submitting your form. Please try again.', true);
+                showStatus('Oops! There was a problem submitting your message. Please try again.', true);
             } finally {
                 // Re-enable submit button
                 submitButton.disabled = false;
