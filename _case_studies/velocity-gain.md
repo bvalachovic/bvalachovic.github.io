@@ -2,12 +2,14 @@
 layout: case-study
 title: "The 30% Velocity Gain"
 subtitle: "When UX Includes Developer Experience"
-date: 2024-03-15
-role: "Product Leader & Technical Lead"
+date: 2022-01-01
+role: "Platform Design Leader & Technical Lead"
 company: "B2B Platform Company"
 order: 2
 ---
 
+## This case study is in the works and will be ready soon...
+<!--
 ## The Problem
 
 Our development team was slowing down. Sprint after sprint, velocity was declining. Stories were taking longer than estimated, and developers were frustrated.
@@ -59,3 +61,4 @@ Within 8 weeks of implementation:
 > Product thinking applies to everything you build—including internal tools. Invest in developer experience and you'll see returns across every metric that matters.
 
 As a product leader who codes, I bridge the gap between user experience and developer experience. Both matter. Both deserve the same level of craft and care.
+-->

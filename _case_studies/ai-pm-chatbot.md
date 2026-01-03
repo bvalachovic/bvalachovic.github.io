@@ -4,10 +4,12 @@ title: "Product Knowledge at Scale"
 subtitle: "An AI PM chatbot to the rescue!"
 date: 2024-09-10
 role: "Product Leader & AI Product Architect"
-company: "Fast-Growing SaaS Startup"
+company: "Personal Project"
 order: 4
 ---
 
+## This case study is in the works and will be ready soon...
+<!--
 ## The Scaling Problem
 
 As the company grew from 20 to 200 employees, I was drowning in the same questions over and over:
@@ -108,3 +110,4 @@ This project saved me 12 hours per week and improved team effectiveness—that's
 ---
 
 **Want to build something similar?** The architecture is straightforward for anyone with Python knowledge. Happy to share the approach.
+-->

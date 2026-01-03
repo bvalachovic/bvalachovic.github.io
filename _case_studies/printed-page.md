@@ -2,12 +2,14 @@
 layout: case-study
 title: "How a Printed Page Revealed a System Failure"
 subtitle: "Reducing report review time by 40% by understanding the actual job to be done"
-date: 2023-11-20
+date: 2023-03-01
 role: "Product Leader & UX Researcher"
-company: "Healthcare Analytics Company"
+company: "Private Company"
 order: 3
 ---
 
+## This case study is in the works and will be ready soon...
+<!--
 ## The Request
 
 "We need a better dashboard. Make it more visual, add charts, make it interactive."
@@ -81,3 +83,4 @@ Instead of a fancier dashboard, we built:
 Sometimes the most valuable thing you can do is **ignore the stated requirements** and discover the actual need.
 
 This is why I combine **product leadership with hands-on research**. Theory is cheap. Observation reveals truth.
+-->

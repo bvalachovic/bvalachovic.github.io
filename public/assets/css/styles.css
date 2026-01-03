@@ -1,0 +1,75 @@
+   /* Custom classes for Tailwind CSS */
+      body {
+        font-family: 'Crimson Text', serif;
+        background-color: #f5f7fa;
+        color: #1f2937;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Oswald', sans-serif;
+        font-weight: 500;
+        letter-spacing:-0.045em;
+      }
+      
+      .nav-link {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+      
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: #4f46e5;
+        transition: width 0.3s ease;
+      }
+      
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      
+      .hero-image-figure {
+        max-height: 500px;
+        object-fit: contain;
+        margin: 0 auto;
+      }
+      
+      .portfolio-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .portfolio-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      code {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: #e5e7eb;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 0.9em;
+      }
+      .caricature-mobile {
+        position: absolute;
+        width: 6.0rem;
+        height: auto;
+        right: -1.0rem;
+        top: 6.0rem;
+        display: inline-block;
+      }
+      .caricature {
+        position: fixed;
+        top: 2.5rem;
+        right: -4.0rem;
+        z-index: 40;
+        display: none !important;
+      }
+      @media (min-width: 1024px) {
+        .caricature {
+          display: block !important;
+        }
+      }

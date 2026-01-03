@@ -8,19 +8,19 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1"
     />
-    <title>Brian Valachovic - Product Leader with 30+ years of experience</title>
+    <title>Brian Valachovic - Product Leader with 30+ years of experience - Discovery | Design | Development | Delivery</title>
     <link rel="icon" type="image/png" href="public/assets/icons/favicon.png" />
     <meta
       name="description"
-      content="Professional Product Leader portfolio of Brian Valachovic, a Product Leader who's been designing, coding, and transforming cultures for over 30 years."
+      content="Professional Product Leader portfolio of Brian Valachovic, a Product Leader who's been leading discovery, designing experiences, developing the solution, and delivering outomes for over 30 years."
     />
     <meta
       property="og:title"
-      content="Brian Valachovic - Product Leader with 30+ years of experience"
+      content="Professional Product Leader portfolio of Brian Valachovic, a Product Leader who's been leading discovery, designing experiences, developing the solution, and delivering outomes for over 30 years."
     />
     <meta
       property="og:description"
-      content="Professional portfolio of Brian Valachovic, a Product Designer with 30 years of experience in UX/UI, graphic design, and marketing."
+      content="Professional Product Leader portfolio of Brian Valachovic, a Product Leader who's been leading discovery, designing experiences, developing the solution, and delivering outomes for over 30 years."
     />
     <meta property="og:type" content="website" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,82 +30,7 @@
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      body {
-        font-family: 'Crimson Text', serif;
-        background-color: #f5f7fa;
-        color: #1f2937;
-      }
-      
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Oswald', sans-serif;
-        font-weight: 500;
-        letter-spacing:-0.045em;
-      }
-      
-      .nav-link {
-        position: relative;
-        transition: color 0.3s ease;
-      }
-      
-      .nav-link::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -4px;
-        left: 0;
-        background-color: #4f46e5;
-        transition: width 0.3s ease;
-      }
-      
-      .nav-link:hover::after {
-        width: 100%;
-      }
-      
-      .hero-image-figure {
-        max-height: 500px;
-        object-fit: contain;
-        margin: 0 auto;
-      }
-      
-      .portfolio-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      
-      .portfolio-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      }
-
-      code {
-        font-family: 'Courier New', Courier, monospace;
-        background-color: #e5e7eb;
-        padding: 0.2em 0.4em;
-        border-radius: 3px;
-        font-size: 0.9em;
-      }
-      .caricature-mobile {
-        position: absolute;
-        width: 6.0rem;
-        height: auto;
-        right: -1.0rem;
-        top: 6.0rem;
-        display: inline-block;
-      }
-      .caricature {
-        position: fixed;
-        top: 2.5rem;
-        right: -4.0rem;
-        z-index: 40;
-        display: none !important;
-      }
-      @media (min-width: 1024px) {
-        .caricature {
-          display: block !important;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="public/assets/css/styles.css" />
   </head>
   <body>
     {% include header.html %}
@@ -121,13 +46,13 @@
           <p class="text-xl sm:text-2xl md:text-3xl text-gray-800 mb-10">
             Most people pick one lane. I've spent 30 years refusing to.
           </p>
-          <a href="#portfoliio" class="inline-block bg-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-700 transition-colors mb-4 mr-2 sm:mb-10 sm:mr-4">
+          <a href="#portfolio" class="inline-block bg-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-700 transition-colors mb-4 mr-2 sm:mb-10 sm:mr-4">
             Case Studies
           </a>
-          <a href="#contact" class="inline-block bg-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-700 transition-colors mb-4 mr-2 sm:mb-10 sm:mr-4">
+          <a href="#philosophy" class="inline-block bg-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-700 transition-colors mb-4 mr-2 sm:mb-10 sm:mr-4">
             Philosophy
           </a>
-          <a href="#portfolio" class="inline-block bg-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-700 transition-colors mb-4 sm:mb-10">
+          <a href="#methodology" class="inline-block bg-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-semibold hover:bg-indigo-700 transition-colors mb-4 sm:mb-10">
             Methodology
           </a>
         </div>
@@ -143,25 +68,25 @@
       </section>
 
       <!-- Portfolio Section -->
-      <section id="portfolio" class="py-16 bg-gray-300">
+      <section id="portfolio" class="py-12 bg-gray-300">
         <div class="container mx-auto px-4">
-          <h1 class="text-8xl font-extrabold text-black mb-12">Case Studies</h1>
+          <h1 class="text-6xl font-extrabold text-black mb-12">Case Studies</h1>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {% assign sorted_case_studies = site.case_studies | sort: 'order' %}
             {% for case_study in sorted_case_studies %}
-            <!-- <a href="{{ case_study.url }}" class="portfolio-card bg-white rounded-3xl shadow-2xl overflow-hidden transition-transform duration-300 hover:transform hover:scale-105 block"> -->
+            <a href="{{ case_study.url }}" class="portfolio-card bg-white rounded-3xl shadow-2xl overflow-hidden transition-transform duration-300 hover:transform hover:scale-105 block">
               <div class="p-8 flex flex-col items-center justify-start h-[32rem]">
-                <h3 class="text-5xl font-bold text-gray-900 mb-10">{{ case_study.title }}</h3>
+                <h3 class="text-4xl font-bold text-gray-900 mb-10">{{ case_study.title }}</h3>
                 <p class="text-2xl text-gray-600 mb-4">{{ case_study.subtitle }}</p>
               </div>
-            <!-- </a> -->
+             </a>
             {% endfor %}
           </div>
         </div>
       </section>
 
       <!-- Contact Section -->
-      <section id="contact" class="py-16 bg-indigo-300">
+      <section id="contact" class="py-12 bg-indigo-300">
           <div class="container mx-auto px-4 max-w-3xl">
               <h2 class="text-6xl font-extrabold text-gray-900 mb-4 text-center">Let's Connect</h2>
               <p class="text-xl text-gray-600 mb-4 text-center">Have a question or want to work together? I'd love to hear from you.
@@ -221,37 +146,27 @@
     <footer class="bg-gray-900 text-white py-12">
     <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-6 md:mb-0">
-            <h2 class="text-2xl font-bold mb-2">Brian Valachovic</h2>
-            <p class="text-gray-400">Product Leader</p>
-        </div>
-        
-        <div class="flex space-x-6">
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-            <span class="sr-only">Twitter</span>
-            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
-            </svg>
-            </a>
-            
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-            <span class="sr-only">LinkedIn</span>
-            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
-            </svg>
-            </a>
-            
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-            <span class="sr-only">GitHub</span>
-            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
-            </svg>
-            </a>
-        </div>
-        </div>
-        
-        <div class="mt-8 border-t border-gray-800 pt-8 text-center text-gray-400">
-        <p>&copy; 2026 Brian Valachovic. All rights reserved.</p>
+          <div class="mb-6 md:mb-0">
+              <h2 class="text-2xl font-bold mb-0">Brian Valachovic</h2>
+              <p class="text-base text-gray-400">Product Leader</p>
+            <div class="flex space-x-2">
+              <a href="https://www.linkedin.com/in/bvalachovic/" class="text-gray-400 hover:text-white transition-colors" target="_blank">
+              <span class="sr-only">LinkedIn</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+              </svg>
+              </a>
+              <a href="https://github.com/bvalachovic?tab=repositories" class="text-gray-400 hover:text-white transition-colors" target="_blank">
+              <span class="sr-only">GitHub</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+              </svg>
+              </a>
+            </div>
+            <div class="mt-4 border-t border-gray-800 pt-4 text-center text-gray-400">
+              <p>&copy; 2026 Brian Valachovic. All rights reserved.</p>
+            </div>
+          </div>
         </div>
     </div>
     </footer>
