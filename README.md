@@ -3,6 +3,10 @@ Brian Valachovic | Product Leader
 
 ## Jekyll Setup
 
+RUN Jekyll locally:
+
+bundle exec jekyll serve --no-watch
+
 ### Structure:
 
 ├── _config.yml              (Jekyll configuration with collections)

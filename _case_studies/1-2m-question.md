@@ -10,19 +10,26 @@ order: 1
 
 ## The Challenge
 
-The executive team was convinced they needed to rewrite a complex validation component for a data transformation system that would take a full development year and cost approximately $1.2M. The pressure was on to start building immediately.
+The executive team was convinced they needed to rewrite a complex validation component (rules engine) for a data transformation system that would take a full development year and cost approximately $1.2M to modernize. The pressure was on to start building immediately.
 
-Something didn't feel right. A pattern was starting to develop.  The assumptions weren't validated, and the customer pain points weren't clearly articulated. The evidence was missing.
+Something didn't feel right. A pattern was starting to develop. The problem wasn't defined. The assumptions that modernization was neeeded, and that users were struggling with invalid data weren't validated. What exactly are the customer's pain points? No one could clearly articulate. The evidence was missing.
 
 ## The Approach
 
 Instead of jumping straight into development, I advocated for a **one-month discovery phase**:
 
-- Implemented an in-app pop-up survey
-- Analyzed existing product usage data
-- Conducted interviews with 5 users from top customers
-- Mapped their experiences
-- Built trust with Engineers, providing them the time they'd needed to address a few technical opportunities (~~technical debt~~) that were consistently generating support tickets
+* Wrote plan based on Marty Cagan's [The Product Discovery Plan](https://www.svpg.com/product-discovery-plan/)
+* Implemented an in-app pop-up poll (Pendo&reg;)
+* Analyzed existing product usage data
+* Conducted interviews with 5 users from top customers
+* Mapped their experiences
+* Built trust with Engineers, providing them the time they'd needed to address a few technical opportunities (~~technical debt~~) that were consistently generating support tickets
+
+![Product Discovery Plan](/public/assets/images/1-2m-question-plan.png)
+> Borrowed Marty Cagan's Product Discovery Plan and shared it with all stakeholders, including everyone early and up front. 
+
+![Pendo Poll results demonstrating data validated on the first or second try by a high percentage.](/public/assets/images/1-2m-question-poll.png)
+> Pendo&reg; Poll results demonstrating user perception of how many attempts it takes to validate complex regulatory data. The 1st or 2nd try was selected most,  followed by 3rd to 5th attempt - still low considering complexity. Users could also enter comments and the sentiment did not point to validation.
 
 ## The Discovery
 
