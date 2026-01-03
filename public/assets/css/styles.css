@@ -67,6 +67,12 @@
         right: -4.0rem;
         z-index: 40;
         display: none !important;
+        transition: top 0.5s ease, right 0.5s ease;
+        cursor: pointer;
+      }
+      .caricature.tucked-away {
+        top: 17rem;
+        right: -10rem;
       }
       @media (min-width: 1024px) {
         .caricature {
