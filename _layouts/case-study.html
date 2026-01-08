@@ -31,6 +31,11 @@
           {{ page.title }}
         </h1>
 
+        <!-- Thumbnail Image -->
+        {% if page.thumbnail %}
+        <img src="{{ page.thumbnail }}" alt="{{ page.title }}" class="w-full rounded-lg shadow-lg mb-8 object-cover max-h-96">
+        {% endif %}
+
         <!-- Subtitle -->
         {% if page.subtitle %}
         <p class="text-2xl md:text-3xl text-gray-600 mb-8">{{ page.subtitle }}</p>
