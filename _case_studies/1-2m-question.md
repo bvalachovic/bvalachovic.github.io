@@ -3,7 +3,7 @@ layout: case-study
 title: "The $1.2M Question"
 subtitle: "How Evidence-Based Discovery Prevented a Year-Long Waste"
 thumbnail: "/public/assets/images/1-2m-question-thumb.png"
-date: 2019-01-01
+date: 2020-10-01
 role: "Product Leader & Product Designer"
 company: "Enterprise B2B SaaS Company"
 order: 1
