@@ -53,6 +53,91 @@
         border-radius: 3px;
         font-size: 0.9em;
       }
+
+      .case-study-content {
+        line-height: 1.8;
+      }
+
+      .case-study-content h2 {
+        font-size: 2.5rem;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        color: #1f2937;
+      }
+
+      .case-study-content h3 {
+        font-size: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #374151;
+      }
+
+      .case-study-content p {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .case-study-content ul {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+        margin-left: 2rem;
+        list-style-type: disc;
+        padding-left: 1rem;
+      }
+
+      .case-study-content ol {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+        margin-left: 2rem;
+        list-style-type: decimal;
+        padding-left: 1rem;
+      }
+
+      .case-study-content li {
+        margin-bottom: 0.5rem;
+      }
+
+      .case-study-content blockquote {
+        border-left: 4px solid #4f46e5;
+        padding-left: 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: #6b7280;
+      }
+
+      .case-study-content img {
+        max-width: 100%;
+        height: auto;
+        margin: 2rem 0;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+
+
+      /* Markdown list styles */
+      article ul,
+      .markdown-content ul,
+      main ul {
+        list-style-type: disc;
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+        padding-left: 0.5rem;
+      }
+
+      article ol,
+      .markdown-content ol,
+      main ol {
+        list-style-type: decimal;
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+        padding-left: 0.5rem;
+      }
+
+      article li,
+      .markdown-content li,
+      main li {
+        margin-bottom: 0.5rem;
+      }
       .caricature-mobile {
         position: absolute;
         width: 6.0rem;

@@ -29,7 +29,7 @@ Instead of jumping straight into development, I advocated for a **one-month disc
 > Borrowed Marty Cagan's Product Discovery Plan and shared it with all stakeholders, including everyone early and up front. 
 
 ![Pendo Poll results demonstrating data validated on the first or second try by a high percentage.](/public/assets/images/1-2m-question-poll.png)
-> Pendo&reg; Poll results demonstrating user perception of how many attempts it takes to validate complex regulatory data. The 1st or 2nd try was selected most,  followed by 3rd to 5th attempt - still low considering complexity. Users could also enter comments and the sentiment did not point to validation.
+> Pendo&reg; Poll results demonstrating user perception of how many attempts it takes to validate complex regulatory data. For most users, 1-5 attempts were needed, yet no one commented on this being a problem considering the complexity of all data. Sentiment did not point to validation.
 
 ## The Discovery
 
