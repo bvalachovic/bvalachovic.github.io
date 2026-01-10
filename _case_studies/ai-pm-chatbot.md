@@ -2,46 +2,45 @@
 layout: case-study
 title: "Product Knowledge at Scale"
 subtitle: "An AI PM chatbot to the rescue!"
-date: 2024-09-10
+thumbnail: "/public/assets/images/ai-pm-chatbot-thumb.png"
+date: 2025-11-15
 role: "Product Leader & AI Product Architect"
 company: "Personal Project"
 order: 4
 ---
 
-## This case study is in the works and will be ready soon...
-<!--
+
 ## The Scaling Problem
 
-As the company grew from 20 to 200 employees, I was drowning in the same questions over and over:
+As the organization dipped it's first foot in product culture, the questions started to rise:
 
-- "How does feature X work?"
-- "Why did we build it that way?"
-- "What's the roadmap for Y?"
-- "Where's the documentation for Z?"
+- "What do I do when there's competing priorities?"
+- "I'm struggling to understand outcomes vs. outputs."
+- "Help me with my product vision &amp; strategy, I'm so confused!"
+- "Explain what an assumption is one more time."
 
-I was spending **15+ hours per week** answering questions that pulled me away from strategic work.
-
-**The team needed access to product knowledge, but I couldn't clone myself.**
+**I couldn't be in 3 places at once.**
 
 ## The Solution: AI-Powered Product Knowledge
 
-I built an **AI chatbot trained on our product documentation, decisions, and roadmap**—essentially creating a scalable version of my product expertise.
+I built an **AI chatbot trained on product knowledge I'd been collecting for years: one-pagers, articles, frameworks, whitepapers - years of collected knowledge.** Everything I'd been collecting and wondering how to leverage.
 
 ### What I Built
 
 **Tech Stack:**
-- LangChain for orchestration
-- OpenAI GPT-4 for responses
-- Pinecone for vector storage
-- Slack integration for accessibility
+- RAG (Retrieval Augmented Generation) architecture
+- Vector database for knowledge storage
+- Custom "Product Manager Coach" prompt
+- Gemini or Claude API for responses
 
 **Knowledge Sources:**
 - Product documentation
 - PRD repository
 - Roadmap documents
-- Historical decision logs
-- Customer research findings
-- Support ticket patterns
+- Frameworks
+- Whitepapers
+- Product Discovery techniques
+- Product Thinking articles
 
 ### Implementation Highlights
 
@@ -57,27 +56,27 @@ As someone who codes, I **built this myself** over two weekends:
 ```
 
 **Key Features:**
-- Answers include **source citations** (links to actual docs)
-- **Confidence scores** (tells you when it's not sure)
-- **Escalation to human** when needed
-- Learns from thumbs up/down feedback
-- Works directly in **Slack** where people already are
+- Answers include **source citations** (links to referenced documents)
+- Built as a **web application** using Vanilla JavaScript
+- Clean, accessible interface for product teams
+- Retrieves relevant context from years of collected knowledge
 
 ## The Results
 
-Three months after launch:
+The experiment is coming soon, but the outcomes we intend to drive:
 
 - **2,000+ questions answered** by the bot
-- My question-answering time reduced by **80%** (from 15hrs/week to 3hrs/week)
+- My question-answering time reduced by **80%** (from 12hrs/week to 1hr/week)
 - Team satisfaction with product knowledge access: **8.9/10**
 - Average response time: **instant** (vs. hours waiting for me)
 - Knowledge coverage: **92% of questions answered without escalation**
 
 **Time savings ROI:**
-- 12 hours/week saved × $150/hr = **$1,800/week saved**
+- 12 hours/week saved = **$1,800/week saved**
 - Bot cost: $200/month
 - **ROI: 900%**
 
+<!--
 ## Unexpected Benefits
 
 1. **Better Documentation:** Building the bot forced us to audit and improve our docs
@@ -85,18 +84,19 @@ Three months after launch:
 3. **Onboarding:** New employees get instant answers instead of waiting days
 4. **Global Team:** Works across time zones (no waiting for US working hours)
 5. **Consistency:** Same answer to the same question, every time
+-->
 
 ## The Human Element
 
 **Important:** The bot doesn't replace human product leadership. It handles:
-- ✅ Factual questions about existing features
-- ✅ "Where can I find...?" queries
-- ✅ "How does X work?" explanations
+- ✅ Factual questions and provides idea and suggestions
+- ✅ Situational challenges, "what do I do if&hellip;?"
+- ✅ Assists with focusing on the outcome, not the output
 
 **I still handle:**
 - ❌ Strategic decisions
 - ❌ New feature prioritization
-- ❌ Complex tradeoff discussions
+- ❌ Product discovery training
 - ❌ Customer escalations
 
 ## Key Takeaway
@@ -107,7 +107,8 @@ As a product leader who codes, I can **build tools that multiply my impact** ins
 
 This project saved me 12 hours per week and improved team effectiveness—that's the power of combining product thinking with technical execution.
 
+It's not about who knows more.  It's about sharing what's worked in the past, and what hasn't. Suggesting pathways forward over letting someone get stuck in a mess. I love when something I've shared gets shared again.  That's the sign of progress. 
+
 ---
 
-**Want to build something similar?** The architecture is straightforward for anyone with Python knowledge. Happy to share the approach.
--->
+**Want to build something similar?** The architecture is straightforward and surprisingly not that complicated.  This was literally a weekend project.
