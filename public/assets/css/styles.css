@@ -114,6 +114,11 @@
       }
 
 
+      /* Thumbnail positioning */
+      .thumbnail-up {
+        object-position: center 60%;
+      }
+
       /* Markdown list styles */
       article ul,
       .markdown-content ul,

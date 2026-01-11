@@ -2,6 +2,7 @@
 layout: case-study
 title: "How a Printed Page Revealed a System Failure"
 subtitle: "Reducing report review time by 40% by understanding the actual job to be done"
+thumbnail: "/public/assets/images/gem-jtbd-thumbnail.png"
 date: 2023-03-01
 role: "Product Leader & UX Researcher"
 company: "Private Company"
