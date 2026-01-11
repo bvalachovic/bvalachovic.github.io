@@ -44,6 +44,13 @@ What we found changed everything:
 - Remaining interviews resulted in similar sentiment.
 - Engineers thanked me for preventing another tragic waste.
 
+![Built micro-site so team &amp; stakeholders could review the research on their own.](/public/assets/images/1-2m-question-discovery-site.png)
+
+
+![Mapped the user experience based on each user interview.](/public/assets/images/1-2m-question-kathy.png)
+
+![Interviews proved extremely valuable. Data integrity was going to be key for us to succeed.](/public/assets/images/1-2m-question-jacky.png)
+
 ## The Outcome
 
 By investing one month in proper discovery:
