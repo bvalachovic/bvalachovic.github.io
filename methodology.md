@@ -5,7 +5,7 @@ description: "How I approach product discovery, design, development, and deliver
 permalink: /methodology/
 ---
 
-## My Process
+<!--## My Process
 
 [Add your methodology content here]
 
@@ -23,7 +23,9 @@ permalink: /methodology/
 
 ### Delivery
 
-[Your content about delivery approach]
+[Your content about delivery approach]-->
+
+## Coming soon
 
 ---
 

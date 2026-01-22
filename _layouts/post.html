@@ -1,0 +1,64 @@
+---
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>{{ page.title }} - Brian Valachovic</title>
+    <link rel="icon" type="image/png" href="/public/assets/icons/favicon.png" />
+    <meta name="description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/public/assets/css/styles.css" />
+  </head>
+  <body>
+    {% include header.html %}
+    <main class="pt-32 pb-16">
+      <article class="container mx-auto px-4 max-w-4xl">
+        <!-- Back Link -->
+        <a href="/articles/" class="inline-flex items-center text-indigo-600 hover:text-indigo-700 mb-8 text-lg font-semibold">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Back to Articles
+        </a>
+
+        <!-- Category Badge -->
+        <div class="block">
+          <span class="inline-block bg-indigo-100 text-indigo-800 text-sm font-semibold px-3 py-1 rounded-full mb-4">
+            {{ page.category }}
+          </span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4">
+          {{ page.title }}
+        </h1>
+
+        <!-- Date -->
+        <p class="text-gray-500 text-lg mb-12">
+          {{ page.date | date: "%B %d, %Y" }}
+        </p>
+
+        <!-- Content -->
+        <div class="case-study-content">
+          {{ content }}
+        </div>
+
+        <!-- Back Link -->
+        <div class="mt-16 pt-8 border-t border-gray-300">
+          <a href="/articles/" class="inline-flex items-center text-indigo-600 hover:text-indigo-700 text-lg font-semibold">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Articles
+          </a>
+        </div>
+      </article>
+    </main>
+    {% include footer.html %}
+  </body>
+</html>

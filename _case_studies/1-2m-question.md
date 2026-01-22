@@ -4,27 +4,38 @@ title: "The $1.2M Question"
 subtitle: "How Evidence-Based Discovery Prevented a Year-Long Waste"
 thumbnail: "/public/assets/images/1-2m-question-thumb.png"
 date: 2020-10-01
-role: "Product Leader & Product Designer"
+role: "Product Leader"
 company: "Enterprise B2B SaaS Company"
 order: 1
 ---
 
 ## The Challenge
 
-The executive team was convinced they needed to rewrite a complex validation component (rules engine) for a data transformation system that would take a full development year and cost approximately $1.2M to modernize. The pressure was on to start building immediately.
+The executive team was convinced they needed to rewrite a complex validation component (think rules engine) for a data transformation system that would take a full development year and cost approximately $1.2M to modernize. The pressure was on to start building immediately.
 
-Something didn't feel right. A pattern was starting to develop. The problem wasn't defined. The assumptions that modernization was neeeded, and that users were struggling with invalid data weren't validated. What exactly are the customer's pain points? No one could clearly articulate. The evidence was missing.
+Something didn't feel right. A pattern was starting to develop. We'd just spent over a year on a new offering, brought on additional contractors to supplement the team, and contracts were not getting signed. What it did feel like was a solution without a defined and validated problem. The assumptions were plenty: 
+
+- that modernization was neeeded to compete with slicker interfaces
+- that users were struggling with invalid data
+- that it generated a large percentage of reported incidents
+  
+Which incidents?
+What exactly are the customer's pain points? 
+What's the vision for this very mature application? 
+Where's the roadmap that illustrates which outcomes are directly linked to doing this work first?
+
+No one could clearly articulate. The evidence was missing.
 
 ## The Approach
 
-Instead of jumping straight into development, I advocated for a **one-month discovery phase**:
+Instead of jumping straight into development, I pushed hard for and executed a **one-month discovery phase**:
 
 * Wrote plan based on Marty Cagan's [The Product Discovery Plan](https://www.svpg.com/product-discovery-plan/)
 * Implemented an in-app pop-up poll (Pendo&reg;)
 * Analyzed existing product usage data
-* Conducted interviews with 5 users from top customers
-* Mapped their experiences
-* Built trust with Engineers, providing them the time they'd needed to address a few technical opportunities (~~technical debt~~) that were consistently generating support tickets
+* Looked at the last 12 months of support incidents
+* Conducted interviews with 5 users from top customers and mapped their experiences
+* Built trust with Engineers, providing them the time they'd needed to address a few minor technical opportunities (~~technical debt~~) that were consistently generating other support tickets
 
 ![Product Discovery Plan](/public/assets/images/1-2m-question-plan.png)
 > Borrowed Marty Cagan's Product Discovery Plan and shared it with all stakeholders, including everyone early and up front. 
@@ -36,13 +47,13 @@ Instead of jumping straight into development, I advocated for a **one-month disc
 
 What we found changed everything:
 
-- **The real problem** wasn't what the executives thought it was:
+- **The real problem** wasn't what leadership thought it was
 - Surveys and interviews yielded no mentions of this component
-- The **problem was data integrity**. Duplicate/redundant data stored in the customers' enterprise system, and then ingested again into ours created a problem: system of record (source of truth)
+- The **problem was data integrity**. Redundant data stored in the customers' enterprise system and ingested into ours created a problem: system of record (source of truth)
 - Our system had no way of knowing about any changes
 - _"I'd rather the data be invalid if it still matches what's in our system.  I can't trust your system."_ - This was an alarming quote from our first interview.  
 - Remaining interviews resulted in similar sentiment.
-- Engineers thanked me for preventing another tragic waste.
+- Engineers were grateful for preventing another tragic waste.
 
 ![Built micro-site so team &amp; stakeholders could review the research on their own.](/public/assets/images/1-2m-question-discovery-site.png)
 
@@ -57,6 +68,7 @@ By investing one month in proper discovery:
 
 - **Saved $1.2M** in unnecessary development costs
 - Were able to pivot and focus on the larger  **data integrity issue** customers really cared about
+- Also learned that our top customer had tightly coupled operating procedures - changes could have been devastating.
 - Paradigm shift - big ideas are very risky assumptions if they're not backed by evidence. Team moved from being order-takers to product thinkers. 
 
 ## Key Takeaway

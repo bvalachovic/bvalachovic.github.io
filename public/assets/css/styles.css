@@ -16,7 +16,7 @@
         transition: color 0.3s ease;
       }
       
-      .nav-link::after {
+      .nav-link::after, .nav-link:active::after {
         content: '';
         position: absolute;
         width: 0;
@@ -27,8 +27,13 @@
         transition: width 0.3s ease;
       }
       
-      .nav-link:hover::after {
+      .nav-link:hover::after,
+      .nav-link.active::after {
         width: 100%;
+      }
+
+      .nav-link.active {
+        color: #4f46e5;
       }
       
       .hero-image-figure {
@@ -66,7 +71,7 @@
       }
 
       .case-study-content h3 {
-        font-size: 2rem;
+        font-size: 1.75rem;
         margin-top: 2rem;
         margin-bottom: 1rem;
         color: #374151;

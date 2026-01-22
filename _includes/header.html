@@ -21,10 +21,11 @@
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex items-center">
                 <ul class="flex space-x-10">
-                    <li><a href="/#portfolio" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">Case Studies</a></li>
-                    <li><a href="/philosophy/" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">Philosophy</a></li>
-                    <li><a href="/methodology/" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">Methodology</a></li>
-                    <li><a href="/about/" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">About</a></li>
+                    <li><a href="/#portfolio" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold{% if page.url == '/' or page.layout == 'case-study' %} active{% endif %}">Case Studies</a></li>
+                    <li><a href="/articles/" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold{% if page.url contains '/articles' or page.layout == 'post' %} active{% endif %}">Articles</a></li>
+                    <li><a href="/philosophy/" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold{% if page.url == '/philosophy/' %} active{% endif %}">Philosophy</a></li>
+                    <li><a href="/methodology/" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold{% if page.url == '/methodology/' %} active{% endif %}">Methodology</a></li>
+                    <li><a href="/about/" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold{% if page.url == '/about/' %} active{% endif %}">About</a></li>
                     <li><a href="/#contact" class="nav-link text-gray-600 hover:text-indigo-600 text-base font-semibold">Contact</a></li>
                 </ul>
             </nav>
@@ -35,10 +36,11 @@
     <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
         <nav class="container mx-auto px-4 py-4">
             <ul class="flex flex-col space-y-4">
-                <li><a href="/#portfolio" class="block text-gray-600 hover:text-indigo-600 text-2xl font-semibold text-center">Case Studies</a></li>
-                <li><a href="/philosophy/" class="block text-gray-600 hover:text-indigo-600 text-2xl font-semibold text-center">Philosophy</a></li>
-                <li><a href="/methodology/" class="block text-gray-600 hover:text-indigo-600 text-2xl font-semibold text-center">Methodology</a></li>
-                <li><a href="/about/" class="block text-gray-600 hover:text-indigo-600 text-2xl font-semibold text-center">About</a></li>
+                <li><a href="/#portfolio" class="block text-2xl font-semibold text-center {% if page.url == '/' or page.layout == 'case-study' %}text-indigo-600{% else %}text-gray-600 hover:text-indigo-600{% endif %}">Case Studies</a></li>
+                <li><a href="/articles/" class="block text-2xl font-semibold text-center {% if page.url contains '/articles' or page.layout == 'post' %}text-indigo-600{% else %}text-gray-600 hover:text-indigo-600{% endif %}">Articles</a></li>
+                <li><a href="/philosophy/" class="block text-2xl font-semibold text-center {% if page.url == '/philosophy/' %}text-indigo-600{% else %}text-gray-600 hover:text-indigo-600{% endif %}">Philosophy</a></li>
+                <li><a href="/methodology/" class="block text-2xl font-semibold text-center {% if page.url == '/methodology/' %}text-indigo-600{% else %}text-gray-600 hover:text-indigo-600{% endif %}">Methodology</a></li>
+                <li><a href="/about/" class="block text-2xl font-semibold text-center {% if page.url == '/about/' %}text-indigo-600{% else %}text-gray-600 hover:text-indigo-600{% endif %}">About</a></li>
                 <li><a href="/#contact" class="block text-gray-600 hover:text-indigo-600 text-2xl font-semibold text-center">Contact</a></li>
             </ul>
         </nav>
