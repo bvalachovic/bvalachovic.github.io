@@ -12,6 +12,11 @@ Simply run the development server script:
 ```bash
 dev.bat
 ```
+Or, manually run:
+
+```bash
+bundle exec jekyll serve --livereload --incremental
+```
 
 This will:
 - Start Jekyll with live reload enabled
