@@ -4,10 +4,54 @@
 <link rel="icon" type="image/png" href="/public/assets/icons/favicon.png" />
 <meta name="description" content="{% if include.description %}{{ include.description }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Professional Product Leader portfolio of Brian Valachovic, a Product Leader who's been leading discovery, designing experiences, developing the solution, and delivering outcomes for over 30 years.{% endif %}" />
 
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+
 <!-- Open Graph -->
 <meta property="og:title" content="{% if include.title %}{{ include.title }}{% elsif page.title %}{{ page.title }} - Brian Valachovic{% else %}Brian Valachovic - Product Leader{% endif %}" />
 <meta property="og:description" content="{% if include.description %}{{ include.description }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Professional Product Leader portfolio of Brian Valachovic.{% endif %}" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}" />
+<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+<meta property="og:image" content="{% if page.thumbnail %}{{ site.url }}{{ page.thumbnail }}{% else %}{{ site.url }}/public/assets/caricaturePortraitTransparent.png{% endif %}" />
+<meta property="og:site_name" content="Brian Valachovic - Product Leader" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{% if include.title %}{{ include.title }}{% elsif page.title %}{{ page.title }} - Brian Valachovic{% else %}Brian Valachovic - Product Leader{% endif %}" />
+<meta name="twitter:description" content="{% if include.description %}{{ include.description }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Professional Product Leader portfolio of Brian Valachovic.{% endif %}" />
+<meta name="twitter:image" content="{% if page.thumbnail %}{{ site.url }}{{ page.thumbnail }}{% else %}{{ site.url }}/public/assets/caricaturePortraitTransparent.png{% endif %}" />
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Brian Valachovic",
+  "url": "{{ site.url }}",
+  "jobTitle": "Product Leader",
+  "description": "Product Leader with 30+ years of experience in discovery, design, development, and delivery.",
+  "sameAs": [
+    "https://www.linkedin.com/in/bvalachovic",
+    "https://github.com/bvalachovic"
+  ]
+}
+</script>
+{% if page.layout == 'post' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ page.title }}",
+  "author": {
+    "@type": "Person",
+    "name": "Brian Valachovic"
+  },
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "description": "{{ page.description | default: page.excerpt | strip_html | strip_newlines | truncate: 160 }}",
+  "url": "{{ site.url }}{{ page.url }}"
+}
+</script>
+{% endif %}
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
