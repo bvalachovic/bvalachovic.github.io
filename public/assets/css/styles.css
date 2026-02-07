@@ -118,6 +118,14 @@
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       }
 
+      .page-content img {
+        max-width: 30%;
+        height: auto;
+        margin: 2rem 0;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+
 
       /* Thumbnail positioning */
       .thumbnail-up {

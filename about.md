@@ -5,7 +5,9 @@ description: "Product leader who codes, designer who ships, consultant who trans
 permalink: /about/
 ---
 
-Most people pick one lane. I've spent 30 years refusing to.
+![Brian Valachovic](/public/assets/images/bv-square.png)
+
+_Most people pick one lane. I've spent 30 years refusing to._
 
 ## The Journey
 
@@ -19,7 +21,7 @@ Most people pick one lane. I've spent 30 years refusing to.
 
 **I write code.** Not just prototypes — production code. I built an AI chatbot with RAG architecture over a weekend. I create CI/CD pipelines for design systems. I ship features in Angular, Vue, and Blazor. When I say "this will take two sprints," I know because I've done it.
 
-**I run discovery.** I've sat with analysts watching them print digital reports and mark them up with red pens. I've deployed Pendo polls that revealed $1.2M in avoided waste. I interview users, map experiences, and find the problems nobody asked about.
+**I run discovery.** I've sat with analysts watching them print digital reports and mark them up with red pens. I've deployed Pendo polls that revealed $1.2M in avoidable waste. I interview users, map experiences, and find the problems nobody asked about.
 
 **I design systems.** Not just pretty mockups—living design systems with documentation, version control, and copy-paste implementation guides. Technology-agnostic foundations that work whether the team uses React, Angular, or Blazor.
 
@@ -34,16 +36,39 @@ Most people pick one lane. I've spent 30 years refusing to.
 
 ## The Skills That Don't Fit in One Box
 
-| Strategy | Design | Engineering |
-|----------|--------|-------------|
-| Product Discovery | Design Systems | Angular, Vue, Blazor |
-| Roadmap Planning | UX Research | RAG/AI Architecture |
-| Stakeholder Management | Accessibility (WCAG) | CI/CD Pipelines |
-| Analytics (Pendo) | Prototyping | JavaScript/TypeScript |
-| SVPG Methodology | Information Architecture | Python |
-
-
-
----
-
-Interested in working together? [Let's connect](/#contact).
+<table class="w-full mb-8 border-collapse bg-white shadow-lg rounded-lg overflow-hidden">
+  <thead>
+    <tr class="bg-indigo-600 text-white">
+      <th class="px-6 py-4 text-left text-lg font-semibold">Strategy</th>
+      <th class="px-6 py-4 text-left text-lg font-semibold">Design</th>
+      <th class="px-6 py-4 text-left text-lg font-semibold">Engineering</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+      <td class="px-6 py-4">Product Discovery</td>
+      <td class="px-6 py-4">Design Systems</td>
+      <td class="px-6 py-4">Angular, Vue, Blazor</td>
+    </tr>
+    <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+      <td class="px-6 py-4">Roadmap Planning</td>
+      <td class="px-6 py-4">UX Research</td>
+      <td class="px-6 py-4">RAG/AI Architecture</td>
+    </tr>
+    <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+      <td class="px-6 py-4">Stakeholder Management</td>
+      <td class="px-6 py-4">Accessibility (WCAG)</td>
+      <td class="px-6 py-4">CI/CD Pipelines</td>
+    </tr>
+    <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+      <td class="px-6 py-4">Analytics (Pendo)</td>
+      <td class="px-6 py-4">Prototyping</td>
+      <td class="px-6 py-4">JavaScript/TypeScript</td>
+    </tr>
+    <tr class="hover:bg-gray-50 transition-colors">
+      <td class="px-6 py-4">SVPG Methodology</td>
+      <td class="px-6 py-4">Information Architecture</td>
+      <td class="px-6 py-4">Python</td>
+    </tr>
+  </tbody>
+</table>
