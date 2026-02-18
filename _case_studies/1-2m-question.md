@@ -7,6 +7,7 @@ date: 2020-10-01
 role: "Product Leader"
 company: "Enterprise B2B SaaS Company"
 order: 1
+icon: "magnifying-glass-chart"
 ---
 
 ## The Challenge

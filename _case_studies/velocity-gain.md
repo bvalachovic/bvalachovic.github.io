@@ -7,6 +7,7 @@ date: 2022-11-10
 role: "Platform Design Leader & Technical Lead"
 company: "B2B Pharmaceutical Analytics Company"
 order: 2
+icon: "rocket"
 ---
 
 

@@ -7,6 +7,7 @@ date: 2023-03-01
 role: "Product Leader & UX Researcher"
 company: "Government"
 order: 3
+icon: "document-text"
 ---
 
 ## This case study is in the works and will be ready soon...

@@ -7,6 +7,7 @@ date: 2025-11-15
 role: "Product Leader & AI Product Architect"
 company: "Personal Project"
 order: 4
+icon: "cpu-chip"
 ---
 
 
