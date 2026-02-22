@@ -14,3 +14,7 @@ _site/
 # Ruby/Bundle defaults
 vendor/
 .bundle/
+
+# Resume generator — personal data, never commit
+_resumes/
+.env
