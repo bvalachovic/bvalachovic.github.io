@@ -127,6 +127,20 @@
       }
 
 
+      /* Anchor links inside markdown content */
+      .case-study-content a,
+      .page-content a {
+        color: #4f46e5;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: color 0.2s ease;
+      }
+
+      .case-study-content a:hover,
+      .page-content a:hover {
+        color: #4338ca;
+      }
+
       /* Thumbnail positioning */
       .thumbnail-up {
         object-position: center 60%;

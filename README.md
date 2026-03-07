@@ -8,7 +8,7 @@ Portfolio site built with Jekyll and hosted on GitHub Pages. Features case studi
 
 ## Quick Start
 
-Run the dev server:
+Run the dev server from a Windows Command Prompt or Mac Terminal:
 
 ```bash
 dev.bat
@@ -17,7 +17,7 @@ dev.bat
 Or manually:
 
 ```bash
-bundle exec jekyll serve --livereload
+bundle exec jekyll serve --livereload --incremental
 ```
 
 Site available at `http://localhost:4000`. Press `Ctrl+C` to stop.
