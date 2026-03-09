@@ -34,7 +34,21 @@ _Most people pick one lane. I've spent 30 years refusing to._
 - **Enterprise B2B SaaS** — Where complex workflows need elegant solutions
 - **Retail & E-commerce** — Where I learned that every second of friction is lost revenue
 
+## On AI
+
+AI doesn't change what makes a successful product. It never will.
+
+What makes products succeed is deeply human work — understanding who's struggling and why, knowing when an idea hasn't been validated, recognizing when process has overtaken people, sensing when a backlog has quietly become a graveyard. That requires being embedded in a culture, earning trust, and reading the room. No model does that.
+
+What AI does is make it dramatically easier to do the things teams always should have been doing but never prioritized. Modeling data properly so you're not handcuffed by technical debt when someone asks about licensing the API in two years. Running research that actually shapes decisions. Prototyping at a speed that makes assumption testing feel effortless rather than expensive. Writing documentation that someone will actually read. Following the best practices that get deprioritized when sprints get tight.
+
+I've seen MBAs arrive with frameworks rolled up like weapons. I've watched process theater replace actual thinking. I know the difference between a team that's moving and a team that's busy. AI doesn't solve any of that — it amplifies whatever is already there. Give it to a team without direction and you'll generate confusion faster. Give it to a team that knows what problem they're solving and it's genuinely transformative.
+
+There is no one right framework. There is no perfect methodology. What I do know is when we're solving the right problem, when we're not, and what it takes to tell the difference. AI is a capable partner in that work. It just isn't a substitute for it.
+
 ## The Skills That Don't Fit in One Box
+
+
 
 <table class="w-full mb-8 border-collapse bg-white shadow-lg rounded-lg overflow-hidden">
   <thead>
