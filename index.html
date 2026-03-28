@@ -172,9 +172,10 @@
 
         function isValidPhone(phone) {
             // Remove all non-numeric characters
-            const cleaned = phone.replace(/\D/g, '');
-            // Check minimum 10 digits and maximum 12 digits
-            return cleaned.length >= 10 && cleaned.length <= 12;
+            let cleaned = phone.replace(/\D/g, '');
+            // Strip leading country code (1 for US/Canada)
+            if (cleaned.length === 11 && cleaned.startsWith('1')) cleaned = cleaned.slice(1);
+            return cleaned.length === 10;
         }
 
         function showStatus(message, isError = false) {
@@ -208,7 +209,7 @@
 
             // Validate phone (only if provided)
             if (phone && !isValidPhone(phone)) {
-                showStatus('Phone number must be 10 digits and no more than 12.', true);
+                showStatus('Please enter a valid 10-digit phone number.', true);
                 document.getElementById('phone').focus();
                 return;
             }
