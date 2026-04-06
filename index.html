@@ -95,7 +95,7 @@
 
                   <div class="mb-6">
                       <label for="phone" class="block font-semibold text-gray-700 mb-2">Phone (Optional)</label>
-                      <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                      <input type="tel" id="phone" name="phone" pattern="[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4}" placeholder="(555) 123-4567" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
                   </div>
 
                   <div class="mb-6">
@@ -170,13 +170,6 @@
             return emailRegex.test(email);
         }
 
-        function isValidPhone(phone) {
-            // Remove all non-numeric characters
-            let cleaned = phone.replace(/\D/g, '');
-            // Strip leading country code (1 for US/Canada)
-            if (cleaned.length === 11 && cleaned.startsWith('1')) cleaned = cleaned.slice(1);
-            return cleaned.length === 10;
-        }
 
         function showStatus(message, isError = false) {
             formStatus.classList.remove('hidden');
@@ -207,14 +200,7 @@
                 return;
             }
 
-            // Validate phone (only if provided)
-            if (phone && !isValidPhone(phone)) {
-                showStatus('Please enter a valid 10-digit phone number.', true);
-                document.getElementById('phone').focus();
-                return;
-            }
-
-            // Disable submit button and show loading state
+// Disable submit button and show loading state
             submitButton.disabled = true;
             const originalButtonText = submitButton.innerHTML;
             submitButton.innerHTML = 'Sending...';
