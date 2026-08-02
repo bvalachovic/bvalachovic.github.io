@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opportunity Solution Tree — Hypothesis Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#1B2027;
+  --ground-2:#232B34;
+  --ground-3:#2C3540;
+  --paper:#F1F0EA;
+  --paper-dim:#D8D7CF;
+  --ink:#171C22;
+  --brass:#C8952F;      /* impact — leadership owns, lagging */
+  --verdigris:#3E9C8B;  /* outcome — team owns, influenceable */
+  --muted:#8A94A0;      /* outputs — deliberately colourless */
+  --rule:#3A4450;
+  --focus:#7FD1C1;
+  --sans:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --serif:"Newsreader",Georgia,serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--ground);
+  color:var(--paper);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  padding:0 20px 120px;
+}
+.wrap{max-width:1320px;margin:0 auto}
+.narrow{max-width:760px;margin:0 auto}
+
+/* ---------- masthead ---------- */
+.masthead{padding:56px 0 32px}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 14px
+}
+.masthead h1{
+  font-family:var(--serif);font-weight:300;font-size:clamp(32px,5.2vw,54px);
+  line-height:1.05;margin:0 0 16px;letter-spacing:-.01em
+}
+.masthead p{max-width:60ch;margin:0;color:var(--paper-dim);font-size:15px}
+
+/* ---------- toolbar ---------- */
+.toolbar{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  flex-wrap:wrap;padding:20px 0;border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);margin-bottom:4px
+}
+.save-status{
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  color:var(--muted)
+}
+.save-status.err{color:#E0A458}
+.toolbar-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ---------- shared tree scaffolding ---------- */
+.tier{position:relative;padding-top:44px}
+.tier:first-of-type{padding-top:40px}
+.tier::before{
+  content:"";position:absolute;top:0;left:50%;width:1px;height:44px;
+  background:var(--rule)
+}
+.tier:first-of-type::before{display:none}
+.tier-label{
+  display:flex;align-items:baseline;gap:12px;margin:0 0 12px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase
+}
+.tier-label .owner{color:var(--muted);letter-spacing:.06em;text-transform:none;font-size:11px}
+.dot{width:7px;height:7px;border-radius:50%;flex:none;transform:translateY(-1px)}
+.dot.impact{background:var(--brass)}
+.dot.outcome{background:var(--verdigris)}
+.dot.dot-opp{background:var(--paper-dim)}
+
+/* ---------- impact ---------- */
+.impact-plaque{
+  background:var(--ground-2);border:1px solid var(--rule);
+  border-top:3px solid var(--brass);border-radius:2px;padding:22px 24px
+}
+.impact-plaque input{
+  width:100%;background:transparent;border:0;border-bottom:1px dashed var(--rule);
+  color:var(--brass);font-family:var(--serif);font-size:clamp(20px,3vw,28px);
+  font-weight:300;padding:6px 0;line-height:1.3
+}
+.impact-plaque input::placeholder{color:var(--muted);opacity:.55}
+.impact-plaque input:focus{outline:0;border-bottom-color:var(--brass)}
+.note{
+  font-size:13px;color:var(--muted);margin:14px 0 0;max-width:62ch
+}
+
+/* ---------- outcome ---------- */
+.outcome-card{
+  width:100%;text-align:left;display:block;cursor:pointer;
+  background:var(--ground-2);border:1px solid var(--rule);
+  border-top:3px solid var(--verdigris);border-radius:2px;
+  padding:22px 24px;color:inherit;font:inherit;
+  transition:background .18s ease,border-color .18s ease
+}
+.outcome-card:hover{background:var(--ground-3)}
+.outcome-card .empty{
+  font-family:var(--serif);font-size:22px;font-weight:300;color:var(--muted)
+}
+.outcome-card .headline{
+  font-family:var(--serif);font-size:clamp(20px,3vw,28px);font-weight:300;
+  color:var(--verdigris);line-height:1.25;margin:0 0 18px
+}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin:0}
+.facts div{margin:0}
+.facts dt{
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 5px
+}
+.facts dd{margin:0;font-size:14.5px;color:var(--paper)}
+.facts .out dd{color:var(--muted)}
+.edit-hint{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-top:18px;display:block
+}
+
+/* ---------- hypothesis: the signature ---------- */
+.hypothesis{
+  background:var(--paper);color:var(--ink);border-radius:2px;
+  padding:clamp(28px,4vw,44px) clamp(24px,4vw,48px);position:relative
+}
+.hypothesis .stamp{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:#6E7580;margin:0 0 22px
+}
+.statement{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(21px,3.3vw,32px);line-height:1.42;margin:0;letter-spacing:-.005em
+}
+.slot{
+  font-style:italic;color:#0F5C51;
+  box-shadow:inset 0 -2px 0 rgba(62,156,139,.35);
+  padding-bottom:1px
+}
+.slot.impact-slot{color:#8A6414;box-shadow:inset 0 -2px 0 rgba(200,149,47,.4)}
+.slot.blank{
+  color:#9AA1AA;font-style:normal;letter-spacing:.02em;
+  box-shadow:inset 0 -1px 0 #B9BEC6
+}
+.hyp-actions{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}
+
+/* ---------- buttons ---------- */
+.btn{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  padding:9px 16px;border-radius:2px;cursor:pointer;border:1px solid;
+  background:transparent;transition:background .15s ease,color .15s ease
+}
+.btn-dark{border-color:#C3C2BA;color:#3C434B}
+.btn-dark:hover{background:#E2E1D9}
+.btn-light{border-color:var(--rule);color:var(--paper-dim)}
+.btn-light:hover{background:var(--ground-3);color:var(--paper)}
+.btn-solid{background:var(--verdigris);border-color:var(--verdigris);color:#10241F}
+.btn-solid:hover{background:#4FB3A0}
+.btn-ghost{border-color:transparent;color:var(--muted);padding:6px 8px}
+.btn-ghost:hover{color:var(--paper)}
+
+/* ---------- opportunities / solutions / experiments ---------- */
+.branches{
+  display:flex;gap:20px;align-items:flex-start;
+  overflow-x:auto;padding:2px 2px 16px;
+  scrollbar-color:var(--rule) var(--ground);scrollbar-width:thin
+}
+.branches.is-empty{display:block;padding-bottom:0}
+.branches::-webkit-scrollbar{height:10px}
+.branches::-webkit-scrollbar-track{background:var(--ground)}
+.branches::-webkit-scrollbar-thumb{background:var(--rule);border-radius:5px}
+.branches::-webkit-scrollbar-thumb:hover{background:var(--muted)}
+.opp{
+  background:var(--ground-2);border:1px solid var(--rule);border-radius:2px;
+  border-left:3px solid var(--paper-dim);padding:18px 20px;
+  flex:0 0 360px;max-width:360px
+}
+.opp-head{display:flex;gap:14px;align-items:flex-start;justify-content:space-between}
+.opp-head h3{
+  font-family:var(--serif);font-weight:400;font-size:19px;margin:0;line-height:1.3
+}
+.kicker{
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);display:block;margin-bottom:6px
+}
+.sol-list{list-style:none;margin:18px 0 0;padding:0 0 0 18px;border-left:1px solid var(--rule)}
+.sol{padding:12px 0}
+.sol + .sol{border-top:1px solid var(--rule)}
+.sol-head{display:flex;gap:12px;align-items:baseline;justify-content:space-between}
+.sol-head p{margin:0;font-size:15px}
+.exp-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.exp{
+  border:1px dashed var(--rule);border-radius:2px;padding:9px 12px;
+  display:flex;gap:12px;align-items:baseline;justify-content:space-between;
+  font-size:13.5px;color:var(--paper-dim)
+}
+.exp .tag{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);flex:none
+}
+.inline-add{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.inline-add input{
+  flex:1 1 220px;min-width:0;background:var(--ground);border:1px solid var(--rule);
+  border-radius:2px;color:var(--paper);font-family:var(--sans);font-size:14px;padding:8px 11px
+}
+.inline-add input::placeholder{color:var(--muted)}
+.inline-add input:focus{outline:0;border-color:var(--focus)}
+.empty-rail{
+  border:1px dashed var(--rule);border-radius:2px;padding:26px 20px;text-align:center;
+  color:var(--muted);font-size:14px
+}
+
+@media (max-width:760px){
+  .branches{flex-direction:column;overflow-x:visible}
+  .opp{flex:1 1 auto;max-width:none}
+}
+
+/* ---------- modal ---------- */
+.backdrop{
+  position:fixed;inset:0;background:rgba(12,15,19,.72);
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:5vh 20px;overflow-y:auto;z-index:40
+}
+.backdrop[hidden]{display:none}
+.modal{
+  background:var(--paper);color:var(--ink);border-radius:3px;
+  width:min(640px,100%);padding:32px clamp(22px,4vw,38px) 28px
+}
+.modal h2{
+  font-family:var(--serif);font-weight:300;font-size:28px;margin:0 0 8px;line-height:1.15
+}
+.modal .lede{margin:0 0 26px;font-size:14px;color:#5A626B;max-width:52ch}
+.field{margin-bottom:22px}
+.field label{
+  display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:#4A525B;margin-bottom:6px
+}
+.field .help{display:block;font-family:var(--sans);font-size:13px;color:#6E7580;
+  letter-spacing:0;text-transform:none;margin-top:3px}
+.field input,.field textarea{
+  width:100%;background:#FAF9F5;border:1px solid #C9C7BE;border-radius:2px;
+  padding:11px 13px;font-family:var(--sans);font-size:15px;color:var(--ink);
+  margin-top:9px;resize:vertical
+}
+.field input:focus,.field textarea:focus{outline:2px solid var(--verdigris);outline-offset:-1px;border-color:var(--verdigris)}
+.field input::placeholder,.field textarea::placeholder{color:#9DA3AB}
+.guardrail{
+  background:#E6EAE7;border-left:3px solid var(--verdigris);
+  padding:14px 16px;font-size:13.5px;color:#39424B;margin:0 0 26px;border-radius:2px
+}
+.guardrail strong{font-weight:600}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;
+  border-top:1px solid #DAD8D0;padding-top:20px}
+.two-up{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:560px){.two-up{grid-template-columns:1fr}}
+
+.toast{
+  position:fixed;left:50%;bottom:28px;transform:translateX(-50%);
+  background:var(--verdigris);color:#0F241F;font-family:var(--mono);font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;padding:11px 20px;border-radius:2px;z-index:60
+}
+.toast[hidden]{display:none}
+
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead narrow">
+    <p class="eyebrow">Opportunity Solution Tree</p>
+    <h1>Start with the impact.<br>Earn your way down to the code.</h1>
+    <p>Leadership sets the business impact. The team picks an outcome it can actually move, states the hypothesis out loud, and only then goes looking for opportunities, solutions and experiments. Everything below the hypothesis is a bet, not a commitment.</p>
+  </header>
+
+  <div class="toolbar narrow">
+    <span class="save-status" id="saveStatus">Changes save automatically to this browser</span>
+    <div class="toolbar-actions">
+      <button class="btn btn-light" id="exportJson">Export JSON</button>
+      <button class="btn btn-light" id="importJsonBtn">Import JSON</button>
+      <input type="file" id="importJsonInput" accept="application/json" hidden>
+      <button class="btn btn-light" id="newTree">Start new tree</button>
+    </div>
+  </div>
+
+  <!-- 1. IMPACT -->
+  <section class="tier narrow">
+    <p class="tier-label"><span class="dot impact"></span>Business impact<span class="owner">Leadership sets this. Lagging, and shaped by things you don't control.</span></p>
+    <div class="impact-plaque">
+      <input id="impact" type="text" autocomplete="off"
+             placeholder="e.g. Cut the cost of processing a filing season">
+    </div>
+    <p class="note">If the number moves for reasons outside the team's work — headcount, the market, the volume of filings — it belongs here, not on the team's scorecard.</p>
+  </section>
+
+  <!-- 2. OUTCOME -->
+  <section class="tier narrow">
+    <p class="tier-label"><span class="dot outcome"></span>Team outcome<span class="owner">The team owns this. A user behaviour a product change can move.</span></p>
+    <button class="outcome-card" id="outcomeCard" aria-haspopup="dialog"></button>
+  </section>
+
+  <!-- 3. HYPOTHESIS -->
+  <section class="tier narrow">
+    <div class="hypothesis">
+      <p class="stamp">The hypothesis — read this aloud in the room</p>
+      <p class="statement" id="statement"></p>
+      <div class="hyp-actions">
+        <button class="btn btn-dark" id="copyHyp">Copy hypothesis</button>
+        <button class="btn btn-dark" id="copyTree">Copy whole tree</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. OPPORTUNITIES -->
+  <section class="tier">
+    <p class="tier-label"><span class="dot dot-opp"></span>Opportunities<span class="owner">The unmet needs and friction standing between users and the outcome.</span></p>
+    <div class="branches" id="branches"></div>
+    <div class="inline-add">
+      <input id="newOpp" type="text" autocomplete="off"
+             placeholder="e.g. Filers can't tell which asset a ticker maps to">
+      <button class="btn btn-solid" id="addOpp">Add opportunity</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- modal -->
+<div class="backdrop" id="backdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h2 id="modalTitle">Define the outcome</h2>
+    <p class="lede">Four answers. Each one drops straight into the hypothesis above.</p>
+
+    <p class="guardrail"><strong>Before you write it:</strong> a team outcome is a change in what people <em>do</em> that your product change can cause. Fewer wrong tickers picked. Fewer questions submitted. If it only moves once a dozen other things line up, it's a business impact — put it at the top of the tree instead.</p>
+
+    <div class="field">
+      <label for="fOutput">Output <span class="help">The change you'll actually make. Finish the phrase “We believe by…”</span></label>
+      <input id="fOutput" type="text" autocomplete="off" placeholder="simplifying the asset entry form">
+    </div>
+
+    <div class="field">
+      <label for="fOutcome">Outcome <span class="help">The behaviour that shifts as a result. Finish “…we will see…”</span></label>
+      <input id="fOutcome" type="text" autocomplete="off" placeholder="fewer incorrect stock symbols submitted to Ethics">
+    </div>
+
+    <div class="two-up">
+      <div class="field">
+        <label for="fMeasure">Measurement <span class="help">Baseline and target, in one line.</span></label>
+        <input id="fMeasure" type="text" autocomplete="off" placeholder="a 50% drop in questions about the form">
+      </div>
+      <div class="field">
+        <label for="fWindow">Time window <span class="help">How long before you read the result.</span></label>
+        <input id="fWindow" type="text" autocomplete="off" placeholder="2 weeks">
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-dark" id="cancelModal">Cancel</button>
+      <button class="btn btn-solid" id="saveModal">Save outcome</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "ost-hypothesis-builder-state-v1";
+
+  var state = {
+    impact: "",
+    output: "",
+    outcome: "",
+    measure: "",
+    window: "",
+    opportunities: []
+  };
+
+  var uid = 0;
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  };
+
+  /* ---------- hypothesis ---------- */
+
+  function slot(value, placeholder, kind) {
+    if (value) {
+      return '<span class="slot' + (kind ? " " + kind : "") + '">' + esc(value) + "</span>";
+    }
+    return '<span class="slot blank">' + esc(placeholder) + "</span>";
+  }
+
+  function renderStatement() {
+    $("statement").innerHTML =
+      "We believe by " + slot(state.output, "making this change") +
+      " we will see " + slot(state.outcome, "this behaviour change") +
+      ". We'll know this is true when, after " + slot(state.window, "this long") +
+      ", we see " + slot(state.measure, "this measurement move") +
+      ". That should drive " + slot(state.impact, "the business impact", "impact-slot") + ".";
+  }
+
+  function statementText() {
+    return "We believe by " + (state.output || "[output]") +
+      " we will see " + (state.outcome || "[outcome]") +
+      ". We'll know this is true when, after " + (state.window || "[time window]") +
+      ", we see " + (state.measure || "[measurement]") +
+      ". That should drive " + (state.impact || "[business impact]") + ".";
+  }
+
+  /* ---------- outcome card ---------- */
+
+  function renderOutcome() {
+    var card = $("outcomeCard");
+    if (!state.outcome && !state.output) {
+      card.innerHTML = '<span class="empty">Set the outcome the team will move &rarr;</span>' +
+        '<span class="edit-hint">Opens the outcome form</span>';
+      return;
+    }
+    card.innerHTML =
+      '<p class="headline">' + esc(state.outcome || "Outcome not yet written") + "</p>" +
+      '<dl class="facts">' +
+        "<div><dt>Measurement</dt><dd>" + esc(state.measure || "—") + "</dd></div>" +
+        "<div><dt>Time window</dt><dd>" + esc(state.window || "—") + "</dd></div>" +
+        '<div class="out"><dt>Output</dt><dd>' + esc(state.output || "—") + "</dd></div>" +
+      "</dl>" +
+      '<span class="edit-hint">Edit</span>';
+  }
+
+  /* ---------- tree ---------- */
+
+  function renderBranches() {
+    var host = $("branches");
+    if (!state.opportunities.length) {
+      host.classList.add("is-empty");
+      host.innerHTML = '<div class="empty-rail">No opportunities yet. Name the friction you heard from users — one per card.</div>';
+      return;
+    }
+    host.classList.remove("is-empty");
+    host.innerHTML = state.opportunities.map(function (opp, i) {
+      var sols = opp.solutions.map(function (sol) {
+        var exps = sol.experiments.map(function (ex) {
+          return '<li class="exp"><span>' + esc(ex.text) + "</span>" +
+            '<span class="tag">Experiment <button class="btn btn-ghost" data-del-exp="' + opp.id + ":" + sol.id + ":" + ex.id + '" aria-label="Remove experiment">&times;</button></span></li>';
+        }).join("");
+        return '<li class="sol">' +
+          '<div class="sol-head"><p>' + esc(sol.text) + "</p>" +
+          '<button class="btn btn-ghost" data-del-sol="' + opp.id + ":" + sol.id + '" aria-label="Remove solution">&times;</button></div>' +
+          (exps ? '<ul class="exp-list">' + exps + "</ul>" : "") +
+          '<div class="inline-add">' +
+            '<input type="text" placeholder="How will you test it cheaply?" data-exp-input="' + opp.id + ":" + sol.id + '">' +
+            '<button class="btn btn-light" data-add-exp="' + opp.id + ":" + sol.id + '">Add experiment</button>' +
+          "</div></li>";
+      }).join("");
+
+      return '<article class="opp">' +
+        '<div class="opp-head"><h3><span class="kicker">Opportunity ' + (i + 1) + "</span>" + esc(opp.text) + "</h3>" +
+        '<button class="btn btn-ghost" data-del-opp="' + opp.id + '" aria-label="Remove opportunity">&times;</button></div>' +
+        (sols ? '<ul class="sol-list">' + sols + "</ul>" : "") +
+        '<div class="inline-add">' +
+          '<input type="text" placeholder="A solution worth considering" data-sol-input="' + opp.id + '">' +
+          '<button class="btn btn-light" data-add-sol="' + opp.id + '">Add solution</button>' +
+        "</div></article>";
+    }).join("");
+  }
+
+  function findOpp(id) {
+    return state.opportunities.filter(function (o) { return o.id === Number(id); })[0];
+  }
+
+  /* ---------- modal ---------- */
+
+  var lastFocus = null;
+
+  function openModal() {
+    lastFocus = document.activeElement;
+    $("fOutput").value = state.output;
+    $("fOutcome").value = state.outcome;
+    $("fMeasure").value = state.measure;
+    $("fWindow").value = state.window;
+    $("backdrop").hidden = false;
+    $("fOutput").focus();
+  }
+
+  function closeModal() {
+    $("backdrop").hidden = true;
+    if (lastFocus) { lastFocus.focus(); }
+  }
+
+  /* ---------- export / text ---------- */
+
+  function treeText() {
+    var out = ["BUSINESS IMPACT", state.impact || "[not set]", "",
+      "TEAM OUTCOME", state.outcome || "[not set]",
+      "Measurement: " + (state.measure || "[not set]"),
+      "Time window: " + (state.window || "[not set]"),
+      "Output: " + (state.output || "[not set]"), "",
+      "HYPOTHESIS", statementText(), "", "OPPORTUNITIES"];
+    if (!state.opportunities.length) { out.push("[none yet]"); }
+    state.opportunities.forEach(function (opp, i) {
+      out.push((i + 1) + ". " + opp.text);
+      opp.solutions.forEach(function (sol) {
+        out.push("   - Solution: " + sol.text);
+        sol.experiments.forEach(function (ex) {
+          out.push("       * Experiment: " + ex.text);
+        });
+      });
+    });
+    return out.join("\n");
+  }
+
+  var toastTimer;
+  function toast(msg) {
+    var t = $("toast");
+    t.textContent = msg;
+    t.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.hidden = true; }, 2200);
+  }
+
+  function copy(text, msg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { toast(msg); },
+        function () { toast("Copy blocked — select and copy manually"); });
+    } else {
+      toast("Copy not available in this context");
+    }
+  }
+
+  /* ---------- persistence: localStorage ---------- */
+
+  function setSaveStatus(msg, isErr) {
+    var el = $("saveStatus");
+    el.textContent = msg;
+    el.classList.toggle("err", !!isErr);
+  }
+
+  function maxId() {
+    var m = 0;
+    state.opportunities.forEach(function (o) {
+      m = Math.max(m, o.id || 0);
+      o.solutions.forEach(function (s) {
+        m = Math.max(m, s.id || 0);
+        s.experiments.forEach(function (ex) { m = Math.max(m, ex.id || 0); });
+      });
+    });
+    return m;
+  }
+
+  function persist() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      setSaveStatus("Saved to this browser · " + new Date().toLocaleTimeString(), false);
+    } catch (err) {
+      setSaveStatus("Couldn't save locally — storage may be full or blocked", true);
+    }
+  }
+
+  var persistTimer;
+  function schedulePersist() {
+    clearTimeout(persistTimer);
+    persistTimer = setTimeout(persist, 300);
+  }
+
+  function applyState(data) {
+    data = data || {};
+    state.impact = data.impact || "";
+    state.output = data.output || "";
+    state.outcome = data.outcome || "";
+    state.measure = data.measure || "";
+    state.window = data.window || "";
+    state.opportunities = Array.isArray(data.opportunities) ? data.opportunities : [];
+    state.opportunities.forEach(function (o) {
+      o.solutions = Array.isArray(o.solutions) ? o.solutions : [];
+      o.solutions.forEach(function (s) {
+        s.experiments = Array.isArray(s.experiments) ? s.experiments : [];
+      });
+    });
+    uid = maxId();
+    $("impact").value = state.impact;
+    renderOutcome();
+    renderStatement();
+    renderBranches();
+  }
+
+  function loadPersisted() {
+    var raw;
+    try { raw = localStorage.getItem(STORAGE_KEY); } catch (err) { return false; }
+    if (!raw) { return false; }
+    try {
+      applyState(JSON.parse(raw));
+      setSaveStatus("Restored your last saved tree from this browser", false);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  /* ---------- import / export JSON file ---------- */
+
+  function exportJson() {
+    var data = JSON.stringify(state, null, 2);
+    var blob = new Blob([data], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "opportunity-solution-tree-" + new Date().toISOString().slice(0, 10) + ".json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    toast("Tree exported");
+  }
+
+  function importJsonFile(file) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      try {
+        var data = JSON.parse(String(reader.result));
+        if (!data || typeof data !== "object" || Array.isArray(data)) { throw new Error("bad shape"); }
+        applyState(data);
+        persist();
+        toast("Tree imported");
+      } catch (err) {
+        toast("That file doesn't look like a valid tree export");
+      }
+    };
+    reader.onerror = function () { toast("Couldn't read that file"); };
+    reader.readAsText(file);
+  }
+
+  /* ---------- wiring ---------- */
+
+  $("impact").addEventListener("input", function (e) {
+    state.impact = e.target.value.trim();
+    renderStatement();
+    schedulePersist();
+  });
+
+  $("outcomeCard").addEventListener("click", openModal);
+  $("cancelModal").addEventListener("click", closeModal);
+  $("backdrop").addEventListener("mousedown", function (e) {
+    if (e.target === $("backdrop")) { closeModal(); }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !$("backdrop").hidden) { closeModal(); }
+  });
+
+  $("saveModal").addEventListener("click", function () {
+    state.output = $("fOutput").value.trim();
+    state.outcome = $("fOutcome").value.trim();
+    state.measure = $("fMeasure").value.trim();
+    state.window = $("fWindow").value.trim();
+    renderOutcome();
+    renderStatement();
+    closeModal();
+    persist();
+  });
+
+  $("copyHyp").addEventListener("click", function () { copy(statementText(), "Hypothesis copied"); });
+  $("copyTree").addEventListener("click", function () { copy(treeText(), "Tree copied"); });
+
+  function addOpportunity() {
+    var input = $("newOpp");
+    var text = input.value.trim();
+    if (!text) { input.focus(); return; }
+    state.opportunities.push({ id: ++uid, text: text, solutions: [] });
+    input.value = "";
+    renderBranches();
+    input.focus();
+    persist();
+  }
+
+  $("addOpp").addEventListener("click", addOpportunity);
+  $("newOpp").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") { addOpportunity(); }
+  });
+
+  $("branches").addEventListener("click", function (e) {
+    var btn = e.target.closest("button");
+    if (!btn) { return; }
+    var d = btn.dataset;
+
+    if (d.delOpp) {
+      state.opportunities = state.opportunities.filter(function (o) { return o.id !== Number(d.delOpp); });
+      renderBranches();
+      persist();
+    } else if (d.addSol) {
+      var si = $("branches").querySelector('[data-sol-input="' + d.addSol + '"]');
+      if (si && si.value.trim()) {
+        findOpp(d.addSol).solutions.push({ id: ++uid, text: si.value.trim(), experiments: [] });
+        renderBranches();
+        persist();
+      }
+    } else if (d.delSol) {
+      var ps = d.delSol.split(":");
+      var op = findOpp(ps[0]);
+      op.solutions = op.solutions.filter(function (s) { return s.id !== Number(ps[1]); });
+      renderBranches();
+      persist();
+    } else if (d.addExp) {
+      var ei = $("branches").querySelector('[data-exp-input="' + d.addExp + '"]');
+      if (ei && ei.value.trim()) {
+        var pa = d.addExp.split(":");
+        findOpp(pa[0]).solutions.filter(function (s) { return s.id === Number(pa[1]); })[0]
+          .experiments.push({ id: ++uid, text: ei.value.trim() });
+        renderBranches();
+        persist();
+      }
+    } else if (d.delExp) {
+      var pe = d.delExp.split(":");
+      var sol = findOpp(pe[0]).solutions.filter(function (s) { return s.id === Number(pe[1]); })[0];
+      sol.experiments = sol.experiments.filter(function (x) { return x.id !== Number(pe[2]); });
+      renderBranches();
+      persist();
+    }
+  });
+
+  $("branches").addEventListener("keydown", function (e) {
+    if (e.key !== "Enter") { return; }
+    var d = e.target.dataset || {};
+    if (d.solInput) {
+      var b1 = $("branches").querySelector('[data-add-sol="' + d.solInput + '"]');
+      if (b1) { b1.click(); }
+    } else if (d.expInput) {
+      var b2 = $("branches").querySelector('[data-add-exp="' + d.expInput + '"]');
+      if (b2) { b2.click(); }
+    }
+  });
+
+  $("exportJson").addEventListener("click", exportJson);
+  $("importJsonBtn").addEventListener("click", function () { $("importJsonInput").click(); });
+  $("importJsonInput").addEventListener("change", function (e) {
+    var file = e.target.files && e.target.files[0];
+    if (file) { importJsonFile(file); }
+    e.target.value = "";
+  });
+  $("newTree").addEventListener("click", function () {
+    if (!window.confirm("Start a new tree? This clears the current impact, outcome and all opportunities saved in this browser.")) { return; }
+    applyState({});
+    persist();
+    toast("Started a new tree");
+  });
+
+  if (!loadPersisted()) {
+    renderOutcome();
+    renderStatement();
+    renderBranches();
+  }
+})();
+</script>
+</body>
+</html>
