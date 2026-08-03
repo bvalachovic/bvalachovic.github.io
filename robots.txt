@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /EAD_Director/
 
 Sitemap: https://bvalachovic.github.io/sitemap.xml

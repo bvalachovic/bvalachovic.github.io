@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Director, Enterprise Application Development — Interview Reference</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --border: #2a2e38;
+    --text: #e6e8ec;
+    --muted: #9aa3b2;
+    --accent: #5b9dff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    padding: 32px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  nav .brand {
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 20px;
+  }
+  nav a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: background 0.15s ease;
+  }
+  nav a:hover { background: #20242e; }
+  nav a.active { background: var(--accent); color: #08101f; font-weight: 600; }
+
+  main {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+    padding: 48px 64px 120px;
+    max-width: 860px;
+  }
+  section {
+    margin-bottom: 96px;
+    scroll-margin-top: 32px;
+  }
+  section h1 {
+    font-size: 26px;
+    margin-bottom: 4px;
+  }
+  section .subhead {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+  .letterhead {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+  .letterhead .name {
+    color: var(--text);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  p {
+    line-height: 1.7;
+    font-size: 15.5px;
+    margin: 0 0 16px;
+  }
+  .placeholder {
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    padding: 32px;
+    color: var(--muted);
+    font-size: 14px;
+    background: #12141a;
+  }
+  .placeholder h3 {
+    color: var(--text);
+    font-size: 15px;
+    margin: 0 0 8px;
+  }
+  .q-group {
+    margin-bottom: 32px;
+  }
+  .q-group h2 {
+    font-size: 16px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .q-group ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+  .q-group li {
+    margin-bottom: 12px;
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  .interview-meta {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .interview-meta strong { color: var(--text); }
+  a, .interview-meta a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Interview Reference</div>
+  <a href="#meta">Call Details</a>
+  <a href="#cover-letter">Cover Letter</a>
+  <a href="#resume">Resume</a>
+  <a href="#diagnosis">Diagnosis &amp; Ideas</a>
+  <a href="#questions">Questions</a>
+</nav>
+
+<main>
+
+  <section id="meta">
+    <h1>Director, Enterprise Application Development</h1>
+    <div class="subhead">Phone Screen — Ray Woeller, Chief Technology Officer</div>
+    <div class="interview-meta">
+      <strong>Date:</strong> Friday, August , 2:00 PM or 3:00 PM EST<br>
+      <strong>Interviewer:</strong> Ray Woeller, CTO, Office of the CIO<br>
+      <strong>Meeting ID:</strong> 265 246 203 370 684<br>
+      <strong>Passcode:</strong> JS6Ye9qJ<br>
+      <strong>Link:</strong> <a href="https://teams.microsoft.com/meet/265246203370684?p=cjWa8B2xvggnXwHErt" target="_blank" rel="noopener">Join Microsoft Teams meeting</a>
+    </div>
+  </section>
+
+  <section id="cover-letter">
+    <h1>Cover Letter</h1>
+    <div class="letterhead">
+      <div class="name">Brian Valachovic</div>
+      bvalachovic@outlook.com &nbsp;·&nbsp; 609.864.4248 &nbsp;·&nbsp; bvalachovic.github.io<br>
+      June 26, 2026
+    </div>
+
+    <p>Dear Hiring Manager / Selection Committee,</p>
+
+    <p>I'm applying for the Director of Enterprise Applications role because it formalizes work I'm already doing — and because the portfolio is at an inflection point that rewards the kind of leadership I've spent thirty years building toward. My title has been Principal UX Designer. My operating level has been somewhere else entirely.</p>
+
+    <p>Across our 65+ Django applications, I've watched us build UI-first and silo-by-silo — solving the same identity, provisioning, and personnel problems over and over because no shared capability layer exists to solve them once. My work over the past period has been about making that cost visible and building the alternative. Remora, the framework-agnostic component library I built on Lit, attacks our front-end fragmentation at the platform level instead of one template at a time. Otis, the personnel system I'm leading, is where I'm untangling the payroll and PeopleSoft integration successes &amp; failures that have quietly eroded user trust into shadow spreadsheets. And when I mapped the new-hire onboarding pipeline — OAM to ServiceNow to AD to Otis to PeopleSoft — I surfaced a systemic cross-system failure with significant manual re-entry, PII traveling over email, and no shared identity key until provisioning. None of that is a UI problem. It's an architecture and operations problem, and it's the work this role exists to lead.</p>
+
+    <p>The thesis I keep returning to is simple: the organization that serves the Senate best over the next decade won't be the one with the most applications — it'll be the one with the fewest, most composable capabilities. That's why I've been pushing for an API-first operating model and a capability registry, using AI-agent readiness as the forcing function. We can't expose anything to an agent that we haven't first defined as a clean, governed capability. I'd rather we get ahead of that deliberately than have it imposed on us by a vendor demo that skipped architectural review.</p>
+
+    <p>This is a people role as much as a technical one, and that's where I've been investing. I've mentored a product owner from delivery-taker to genuine outcome-owner, partnered closely with our solutions architect, and consistently challenged project-model thinking in favor of durable product capability — constructively, with concrete examples, not abstractions. Earlier in my career I built design systems at MMIT that drove a 30% engineering velocity gain, which is the same lever I'd pull here: give developers reusable, well-governed building blocks and you get speed, consistency, and morale at once.</p>
+
+    <p>The track record outside these walls backs it up. At Reed Tech I halted a $1.2M rebuild by running a one-month discovery sprint that proved leadership was solving the wrong problem. At MMIT I identified a $5–10M API-first business-model opportunity that reshaped go-to-market. I'm SVPG-trained under Lea Hickman and certified through Product School. And inside SAA, I've already delivered measurable outcomes in this exact environment — cutting printed financial disclosures from 45% to under 20%.</p>
+
+    <p>I know this portfolio, this organization, and these constraints. I'm already cleared, already fluent in how we work, and already doing director-level discovery, architecture, and strategy as an individual contributor. The capability layer SAA needs doesn't fully exist yet — but the people closest to building it right are already here. I'd like the mandate to lead that work.</p>
+
+    <p>Thank you for your consideration.</p>
+
+    <p>Sincerely,<br>Brian Valachovic</p>
+  </section>
+
+  <section id="resume" style="width: 80%;">
+    <h1>Resume</h1>
+    <pre>
+      BRIAN VALACHOVIC
+      Product Leader | Principal UX Designer
+      bvalachovic@outlook.com| 609.864.4248
+      
+      EXECUTIVE SUMMARY
+      Strategic product leader with 30 years of experience advancing from IC to Principal-level leadership. I start by understanding 
+      what drives business value, then define the product outcomes that will move those metrics. From there, I coach and mentor teams 
+      on product thinking — moving them beyond pixel delivery into discovery, assumption testing, and experimentation that converges 
+      on solutions worth building. Unlike most product leaders, I bring full-stack product capability — from customer discovery through 
+      front-end implementation. I've done this repeatedly in organizations resistant to modern product practices, elevating design from 
+      a service function to a strategic partner.
+
+      KEY DIFFERENTIATORS
+      •	30-Year Growth Trajectory: Advanced from designer to Principal-level product leadership through sustained excellence across 
+      retail, healthcare, and government sectors
+      •	Stops Bad Projects: Saved $1.2M halting 12-month project through discovery research; proven ability to validate with research 
+      and redirect resources to higher-value opportunities
+      •	Design Systems Pioneer: Established first design systems at three organizations (25-40% time savings), driving consistency and 
+      efficiency at scale
+      •	Strategic Transformation: Drove MMIT's pivot from standalone portals to platform integration (Veeva), shifting go-to-market 
+      approach and opening new revenue streams
+      •	Security & Risk Awareness: Identified and resolved critical vulnerabilities preventing multi-million dollar breaches with 
+      understanding of political and trust implications
+      •	Cultural Change Agent: Builds trust-based subcultures in resistant organizations, modeling psychological safety and enabling 
+      innovation where culture misunderstands risk-taking
+
+      EXPERIENCE
+      US Senate Sergeant at Arms | Washington, DC (Remote) 
+      Principal UX Designer | March 2023 – Present
+      Leading product transformation across 65+ enterprise applications serving 10,000+ Senate staff.
+      •	Reduced printed financial disclosures from 45% to 5%, saving 12,000 staff minutes annually (~$50K value) for Senate Ethics Committee reviewing 4,500+ reports
+      •	Pioneered reusable component architecture (15 components across 10 modernized applications) reducing accessibility remediation from weeks to hours enterprise-wide
+      •	Drove personnel system from email/paper workflows to 100% electronic submission (5,000+ annual actions) through focused PeopleSoft integration, saving 400+ hours annually
+      •	Identified and resolved critical security vulnerability exposing production data, preventing multimillion-dollar breach of 10,000+ records
+      •	Built PM Coach AI chatbot (RAG architecture) reducing new PM onboarding from 3 months to 6 weeks; serves 15+ team members with on-demand product knowledge
+      
+      MMIT (Managed Markets Insights & Technology) | Remote
+      Senior UX Designer | 2021 – 2023
+      Led design for pharmaceutical market access analytics software driving product innovation and efficiency.
+      •	Built first Design System (12 components) reducing development time 30% while establishing white-labeling framework enabling expansion to new pharma markets
+      •	Drove strategic shift from standalone portals to platform integration; POC for Veeva modules became company's #1 initiative, fundamentally changing go-to-market strategy
+      •	Prototyped next-generation Analytics platform solidifying major pharmaceutical client deal (est. $5M+); instrumented with Gainsight providing first quantitative usage metrics
+
+      Reed Tech Life Sciences | Remote
+      Senior Software Engineer / UX Lead | 2015 – 2021
+      Introduced analytics-driven decision making and established SVPG methodology for life sciences regulatory data technology products.
+      •	Halted 12-month project through 1-month discovery initiative finding no evidence to support investment, saving est. $1.2M while identifying higher-value opportunities
+      •	Stood up first Design System improving developer experience, reducing development time 25%, and creating product unity across division
+      •	Implemented product analytics and in-app engagement, shifting organization from output metrics to outcome measurement
+      
+      Earlier Roles: JK-Group Inc (Sr UI Developer, 2012-2015), Hoshino USA (Sr Front End Developer / Digital Marketing, 2009-2012), Burlington Coat Factory (Lead Web Designer, Graphic Designer 1995-2009)
+
+      TECHNICAL & PRODUCT EXPERTISE
+      Product: SVPG • JTBD • Opportunity Solution Trees • Discovery & Assumption Mapping • Product Analytics (Pendo, Gainsight, Clarity) • Behavioral Data Analysis • Product Operations
+      Design & Research: Discovery • User Interviews • Usability Testing • Design Systems • Prototyping (Figma, Axure, UXPin) • Information Architecture • Accessibility (WCAG, Section 508)
+      Technical: Vue.js • Angular • HTML5/CSS3 • RAG/AI • Git • ServiceNow • Jira
+      Domain: FDA-regulated environments • Pharma commercial/market access • Life sciences regulatory data • Enterprise B2B SaaS
+
+      EDUCATION & CERTIFICATIONS
+      Product School – Product Management Certification • SVPG Training – Product Discovery & Strategy • UX Design Institute – UX Design Certification, Accessibility
+
+    </pre>
+  </section>
+
+  <section id="diagnosis" style="width: 100%;">
+    <h1>Diagnosis &amp; Ideas</h1>
+    <div class="subhead">Building Trust, Reducing Fear, & Celebrating the Right Things</div>
+    <div>
+      <p>
+        In almost 3.5 years, I've been doing the tactical project work I'm assigned to. At 
+        the same time, I've been applying what I've learned in UX &amp; Product Design when 
+        I'm assigned an output without evidence. <strong>Discovery</strong>. All solutions are a hypothesis 
+        when they're not accommpanied with context, evidence, and a clear outcome. This may
+        look like defiance or resistance to some, and it's frequently resulted in the comment 
+        <i>"we build what customers ask for"</i>, but I realize this reaction is caused by the 
+        fear that decades of decisions were made without evidence. But, it's table stakes for 
+        product management and design. I don't know how to operate any other way.
+      </p>
+      <p>
+        Teams today build what they are asked to build. Worse, they provide the estimates they believe
+        leadership wants to hear. This is because the team has prided itself on speed. But, speed has 
+        been an illusion. Stakeholders waiting 3 years for funding is not speed. It's process failure.
+        A team responsible for a portfolio of this size, that operates the same way it did when it had 
+        10 applications is a team that has not matured because the status quo could not be challenged. 
+        Instead, they looked to ways to build faster, reduce tech and UX debt faster - OUTPUT faster.
+        All non-starters. 
+      </p>
+      <ul>
+        <li>3-5 month cycles where Agile makes any scope possible is fantasy</li>
+        <li>Software &amp; knowledge degrades the moment the team departs</li>
+        <li>Our "apps" are accidental platforms</li>
+        <li>Product architecture, data modeling &amp; governance is seen as "over-engineering" and a barrier to speed</li>
+        <li>Technical &amp; UX debt is a HUGE tax for skipping architecture &amp; design</li>
+        <li>This has created a culture of short-term thinking and long-term debt</li>
+        <li>KTLO work is hidden</li>
+        <li>Unbalanced budgets: 100% of work is new</li>
+        <li>Rewrites/modernization efforts are HUGE RED FLAGS.</li>
+        <li>This has created false expectations for leadership</li>
+        <li>Project funding only exacerbates the problem</li>
+        <li>Focusing on outcomes has created a false understanding of the product operating model - there's much more to it</li>
+        <li>Project model = no ownership, a prerequisite for product management principles</li>
+      </ul>
+      <div class="subhead">The Car Manufacturer Analogy</div>
+      <pre>
+            Close your eyes. Imagine a pristine car manufacturing plant.
+            At the center of the plant is the Engine Team - the specialists who build the safest, most secure
+            engines the company has ever produced. This year, they’ve built a new engine: Okta. Leadership
+            has mandated that all vehicles must be upgraded to this new engine by the fall.
+            The Engine Team is proud. The new engine is modern, secure, and powerful.
+            But there’s a problem.
+            The new engine arrives missing a critical component:
+            authorization.
+            Now imagine the Car Teams.
+            These teams build the vehicles themselves. They are excellent at what they do - seasoned
+            engineers who know how to fix tires, adjust steering columns, tune suspensions, and solve
+            every problem outside the engine compartment.
+            Historically, they’ve never needed to worry about engines.
+            The old engine always worked.
+            It always handled identity.
+            It always handled authorization.
+            It always made the car run.
+            But now the old engine is going away.
+            And the new engine - Okta - removes the very system the cars depended on.
+            Copilot may make mistakes 2
+            The Car Teams react the only way they know how.
+            They start rewiring dashboards.
+            They resize wheels.
+            They move steering columns.
+            They invent “personas.”
+            They create custom access logic.
+            They patch and glue and retrofit.
+            They’re solving tire problems.
+            They’re solving steering problems.
+            They’re solving dashboard problems.
+            But they never pop the hood.
+            They never say to leadership:
+            “This new engine is missing its authorization system.
+            We aren’t engine builders.
+            IAM needs to deliver this.”
+            Not because they’re incapable - but because the culture has taught them that the only
+            acceptable answer is motion.
+            Get the car rolling.
+            Show progress.
+            Don’t say “stop.”
+            Don’t say “this isn’t our domain.”
+            Don’t say “the engine team needs to fix this.”
+            So the Car Teams do what they’ve always done:
+            They push the car downhill so leadership sees movement.
+            The result?
+            Cars that move only when pushed by many people.
+            Cars that are slow, fragile, and resource-dependent.
+            Cars that require constant firefighting.
+            Cars that could be flying down the road - if the engine had been complete.
+            This isn’t a failure of the Car Teams.
+            It’s a failure of the system.
+            The Engine Team delivered authentication.
+            But the engine is missing authorization.
+            And the Car Teams are terrified to say:
+            “This isn’t our expertise.”
+            In healthy product organizations, that moment - the moment someone says “this isn’t our
+            domain” - is celebrated. Because leadership understands the cost of firefighting. They know that
+            pushing a car downhill is not the same as building a car that drives itself.
+            Copilot may make mistakes 3
+            The opportunity ahead
+            The real modernization work is not in rewiring dashboards or resizing wheels.
+            It’s in delivering the missing engine component - authorization - so the Car Teams can stop
+            pushing cars downhill and start building vehicles that actually drive.
+            And that requires one thing:
+            Someone willing to pop the hood.
+          </pre>
+      <ul>
+        <li><a href="IAM_Okta_Identity.html">IAM: Okta Identity</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="questions">
+    <h1>Questions for Ray Woeller</h1>
+    <div class="subhead">Director-level questions for a CTO phone screen</div>
+
+    <div class="q-group">
+      <h2>Mandate &amp; Scope</h2>
+      <ul>
+        <li>
+          As you think about the future of EAD, and maybe more importantly, technology at the SAA, how important is it to you that we have a shared,
+          evidence-based understanding of the portfolio, so that strategy and prioritization are based in objectivity, and can be addressed intentionally,
+          not reactively? How does this role fit into that vision?
+        </li>
+        <li>What does success look like for this role in the first 6 months, and how would you distinguish that from success at 18–24 months?</li>
+        <li>Is this role being created to formalize work that's already happening informally, or is it meant to reset direction? What's the honest gap between the job description and where the org actually is today?</li>
+        <li>How much authority would this role have over prioritization across the application portfolio versus advising into decisions made elsewhere?</li>
+      </ul>
+    </div>
+
+    <div class="q-group">
+      <h2>Capability Governance &amp; API-First Strategy</h2>
+      <ul>
+        <li>Has there been prior appetite — or prior failed attempts — at a shared capability layer or API-first model across the portfolio? What happened last time?</li>
+        <li>Who owns architectural review today when a new system or integration gets proposed, and how enforceable is that review in practice?</li>
+        <li>As AI-agent readiness becomes a forcing function for clean, governed capabilities, how is your office thinking about sequencing that work against existing modernization priorities?</li>
+      </ul>
+    </div>
+
+    <div class="q-group">
+      <h2>Organizational Priorities</h2>
+      <ul>
+        <li>Of the ~65+ applications in the portfolio, which ones represent the highest institutional risk right now — technical debt, vendor risk, or single points of failure?</li>
+        <li>Where does leadership feel the most pain today: fragmentation, delivery speed, security/compliance, or trust in data across systems?</li>
+        <li>How aligned are the CIO's office and the business units on what "enterprise" application development should mean going forward?</li>
+      </ul>
+    </div>
+
+    <div class="q-group">
+      <h2>Decision Authority &amp; Structure</h2>
+      <ul>
+        <li>Who would this role report to day-to-day, and who are the peer directors or architects this role needs to build alignment with?</li>
+        <li>What budget or staffing authority comes with this role versus what needs to be requested project by project?</li>
+        <li>How are competing priorities between individual application teams and enterprise-wide capability work typically resolved today?</li>
+      </ul>
+    </div>
+
+    <div class="q-group">
+      <h2>Success Metrics</h2>
+      <ul>
+        <li>What metrics does your office currently track for the health of the application portfolio, and which of those do you trust versus which feel more vanity than signal?</li>
+        <li>If I'm effective in this role a year from now, what will have measurably changed — fewer duplicate systems, faster delivery, fewer manual/PII-handling workarounds, something else?</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const links = document.querySelectorAll('nav a');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+
+  function setActive() {
+    let current = sections[0];
+    for (const s of sections) {
+      if (s.getBoundingClientRect().top - 80 <= 0) current = s;
+    }
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current.id));
+  }
+
+  window.addEventListener('scroll', setActive);
+  setActive();
+</script>
+
+</body>
+</html>

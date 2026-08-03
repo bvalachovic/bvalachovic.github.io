@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Identity as a Capability, Not a Project</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #60a5fa;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .topbar {
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .topbar a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    h1, h2, h3 {
+      line-height: 1.25;
+    }
+    h1 { font-size: 2rem; margin-bottom: 0.25rem; }
+    h2 { font-size: 1.35rem; margin-top: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.35rem; }
+    h3 { font-size: 1.05rem; margin-top: 1.25rem; }
+    p, li { color: var(--muted); }
+    blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: #e2e8f0;
+    }
+    code {
+      background: rgba(255,255,255,0.08);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+    pre {
+      background: #020617;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+      color: #e2e8f0;
+    }
+    .mermaid {
+      background: #020617;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    ul, ol { padding-left: 1.25rem; }
+    a { color: var(--accent); }
+    .meta {
+      color: #cbd5e1;
+      margin-bottom: 1rem;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+  </script>
+</head>
+<body>
+  <div class="topbar">
+    <a href="index.html">← Back to index</a>
+  </div>
+
+  <main class="container">
+    <h1>Identity as a Capability, Not a Project</h1>
+    <p class="meta"><strong>Enterprise Applications Development — position paper on the Okta migration</strong><br>Prepared July 2026</p>
+
+    <hr>
+
+    <h2>1. Problem statement (short version)</h2>
+    <blockquote>
+      We are treating the Okta migration as a protocol swap when it is our only realistic chance in a decade to define an enterprise user model. Every custom application we own is an accidental platform: each one maintains its own user table, its own copy of personnel PII, and its own private answer to “who is this person, which offices do they work for, and what may they do there.” Okta will replace the token format and leave that fragmentation intact — at a much higher cost to fix afterward, because forty applications will have been re-wired to a just-in-time profile that is, again, just an email address and a name.
+    </blockquote>
+
+    <h2>2. Problem statement (full version)</h2>
+    <p><strong>The stated problem.</strong> Microsoft’s on-premises federation stack and our Duo MFA integration are approaching support boundaries. IAM and the Okta team have scoped a migration: repoint each relying-party trust from AD FS to Okta, application by application. The Asana plan reflects this — a long, flat list of per-application tasks.</p>
+
+    <p><strong>The actual problem.</strong> Authentication was never our constraint. Our constraint is that we have no shared definition of a <strong>Person</strong>, an <strong>Office</strong>, or the <strong>Affiliation</strong> between them.</p>
+
+    <p>Concretely, today:</p>
+    <ul>
+      <li>Each Django and .NET application creates a local user record on assertion and maps it to its own model. The join key is typically email or UPN — both of which change.</li>
+      <li>A staffer who works for two offices exists as two or more unrelated records with no way to reconcile them.</li>
+      <li>Offices re-enter the same PI and PII into several systems during onboarding because no system is authoritative.</li>
+      <li>Pre-employment identity is real and we already model it — a candidate creates an account and applies to posted positions in a separate Django application — but that data dies in that application and is re-keyed when the person is hired.</li>
+      <li>Nobody can answer “what does this person have access to?” or “did separation actually revoke everything?” without polling every application team.</li>
+    </ul>
+
+    <p><strong>The scoping gap.</strong> The current plan contains no task to define a user model, no authoritative source for Person or Office, no identity lifecycle, and no named owner for identity as a shared service. The application teams that own every downstream user model were not consulted. This is Conway’s Law operating exactly as advertised: our authentication architecture is going to mirror our org chart rather than our domain.</p>
+
+    <p><strong>The risk if nothing changes.</strong> We spend the AD FS budget and finish with the same fragmentation expressed in OIDC instead of WS-Fed, plus forty new integrations to unwind. The security consequence is the sharper one: joiner–mover–leaver events still do not propagate, so separations remain manually reconciled across systems.</p>
+
+    <p><strong>The reframe.</strong> Identity is not a project with an end date. It is an internal <strong>product</strong> that IAM owns and every application team consumes — a governed Person/Office/Affiliation model, an authoritative lifecycle with published joiner–mover–leaver events, and SCIM-based provisioning. The AD FS deadline should be the forcing function that funds it, not the reason to skip it.</p>
+
+    <h2>3. How urgent is the AD FS retirement, really?</h2>
+    <p>Worth being precise here, because the urgency is being used to justify the narrow scope — and it is softer than it sounds.</p>
+
+    <p><strong>AD FS has no announced end-of-life date.</strong> It is a role within Windows Server, not a separately licensed product with a sunset. Microsoft publishes strong <em>guidance</em> to move from federation to cloud authentication, and an official decommissioning playbook, but “Microsoft is sunsetting AD FS” is not accurate as stated. It is being deprecated by neglect and by advocacy, not by a date.</p>
+
+    <p><strong>The real deadline is the operating system underneath it.</strong> Windows Server 2016 extended support ends <strong>January 12, 2027</strong>. If the AD FS farm runs on WS2016, that is a genuine, dated, security-relevant deadline — but the remediation is an OS upgrade to WS2022/2025, which buys years. Migrating identity providers is a <em>choice</em> being made on top of a hosting deadline.</p>
+
+    <p><strong>Duo is a similar story.</strong> Duo’s AD FS support ended for Windows Server 2012/2012 R2 in October 2023, and the legacy iframe-based prompt reached end of support in March 2024. The current Duo AD FS adapter (v2.x with Universal Prompt) is supported on Windows Server 2016 and later. So Duo is not forcing a move off AD FS — it is forcing a move off <em>old</em> AD FS and the <em>old</em> prompt. If we are already on an unsupported combination, that is an urgent operational problem with a small, well-understood fix.</p>
+
+    <p><strong>Questions to verify before conceding the timeline:</strong></p>
+    <ol>
+      <li>What Windows Server version is the AD FS farm on, and what is its actual support end date?</li>
+      <li>Which Duo adapter version and prompt are we running? Are we already out of support?</li>
+      <li>Is there a Senate CIO or Sergeant at Arms directive with a hard date, or is the date self-imposed by the project?</li>
+      <li>Why Okta rather than Entra ID? Microsoft’s documented path off AD FS is Entra. Choosing Okta is a defensible decision, but it should be a decision, not a default.</li>
+    </ol>
+
+    <p><strong>Bottom line for the interview:</strong> do not argue against the migration. Argue that the deadline is bounded, dated, and schedulable — which means the sequencing is negotiable, which means there is room to insert a user-model workstream without moving the date.</p>
+
+    <h2>4. How I would approach it</h2>
+    <p><strong>Lead with the security argument, not the architecture argument.</strong> “We cannot prove that separation revokes access across all systems” moves faster in this building than “our domain model is fragmented.” It is the same problem, stated in the language the sponsors already fund.</p>
+
+    <p><strong>Ask for two things, not for a replan.</strong> The migration train is moving; asking to stop it loses. Ask for the two things that are nearly free now and nearly impossible later:</p>
+    <ol>
+      <li><strong>An immutable person identifier as the join key.</strong> Every application maps to a stable enterprise <code>person_id</code> (Okta <code>sub</code>, or a GUID we mint), never to email or UPN. This is a small per-app change during a migration that is already touching every app, and it preserves every future option.</li>
+      <li><strong>Affiliation delivered as a claim or SCIM attribute</strong> — the person’s set of <code>{office, role, status, effective dates}</code> — rather than each app inferring it locally.</li>
+    </ol>
+
+    <p>If nothing else in this document lands, those two do.</p>
+
+    <p><strong>Build the evidence cheaply, before the interview.</strong> Take a one-page Person/Office/Affiliation model to three application teams and ask one question: “what would you delete from your codebase if this existed?” Their answers are the business case, and they are not my opinion.</p>
+
+    <p><strong>Use the strangler pattern, not a big-bang model.</strong> Each application’s Okta cutover gains one extra step: resolve the local user PK to the enterprise <code>person_id</code> and record the mapping. That lookup table, accumulated app by app, <em>is</em> the seed of the enterprise directory. No app is rewritten; the model emerges from work already scheduled.</p>
+
+    <p><strong>Name the capability and give it an owner.</strong> “Enterprise Identity Platform,” owned by IAM, with a published, versioned contract (claim set, SCIM schema, event schema) and application teams as named consumers. A capability with a product owner survives the project’s end date; a project does not.</p>
+
+    <p><strong>Counter Conway’s Law deliberately.</strong> A standing identity working group with one representative per application team, meeting through the migration. The inverse Conway maneuver: change the communication structure to get the architecture you want.</p>
+
+    <p><strong>Measure the thing offices actually feel.</strong> Number of systems a new staffer’s PII is entered into (target: one). Time from offer to fully provisioned. Time from separation to fully deprovisioned. Count of orphaned accounts. These are onboarding metrics, not identity metrics — which is why they will be believed.</p>
+
+    <h2>5. Enterprise user model — entity relationship diagram</h2>
+    <p>The design decisions worth defending out loud:</p>
+    <ul>
+      <li><strong>PERSON is separate from IDENTITY_ACCOUNT.</strong> A human is not a login. People change names, emails, and credentials; the person record must outlive all of them. This is what makes pre-employment identity possible: a candidate is a PERSON with no account yet.</li>
+      <li><strong>AFFILIATION is the center of the model, not PERSON.</strong> A person’s relationship to an office is time-bounded, typed (staff, detailee, contractor, intern, fellow, shared staff), and repeatable. A staffer serving two offices has two affiliations, not two identities.</li>
+      <li><strong>Entitlements attach to AFFILIATION, never to PERSON.</strong> “Admin users manage personnel for their office” is only expressible if the grant is scoped to the office relationship. This single decision is the one the current plan is on track to get wrong.</li>
+      <li><strong>JOB_APPLICATION references the same PERSON that later becomes an employee.</strong> No re-keying, no data death in the recruiting app.</li>
+      <li><strong>APP_LOCAL_PROFILE is modeled honestly.</strong> Existing Django and .NET user tables will not disappear. Model them as projections of PERSON with an explicit sync method, and the fragmentation becomes visible and governable rather than invisible and permanent.</li>
+      <li><strong>PERSON_ATTRIBUTE carries classification and authoritative source.</strong> This is how “offices enter PII into five systems” stops: every attribute has exactly one system of record.</li>
+    </ul>
+
+    <div class="mermaid">erDiagram
+    direction LR
+
+    PERSON ||--o{ IDENTITY_ACCOUNT : "authenticates via"
+    PERSON ||--o{ AFFILIATION : holds
+    PERSON ||--o{ PERSON_ATTRIBUTE : "described by"
+    PERSON ||--o{ LIFECYCLE_EVENT : emits
+    PERSON ||--o{ JOB_APPLICATION : submits
+    PERSON ||--o{ APP_LOCAL_PROFILE : "projected into"
+
+    ORGANIZATION ||--o{ AFFILIATION : "employs or sponsors"
+    ORGANIZATION ||--o{ ORGANIZATION : "parent of"
+    ORGANIZATION }o--o| SENATE_TERM : "chartered for"
+    ORGANIZATION ||--o{ POSITION : posts
+
+    AFFILIATION ||--o{ ROLE_ASSIGNMENT : carries
+    AFFILIATION ||--|{ AFFILIATION_STATE : "transitions through"
+    AFFILIATION ||--o| SPONSORSHIP : "governed by"
+    AFFILIATION ||--o{ GROUP_MEMBERSHIP : derives
+    AFFILIATION ||--o{ ACCESS_REQUEST : "requested for"
+
+    ROLE ||--o{ ROLE_ASSIGNMENT : "granted as"
+    ROLE ||--o{ ROLE_ENTITLEMENT : bundles
+    ROLE ||--o{ ACCESS_REQUEST : "sought in"
+    ENTITLEMENT ||--o{ ROLE_ENTITLEMENT : "included in"
+
+    APPLICATION ||--o{ ENTITLEMENT : defines
+    APPLICATION ||--o{ APP_LOCAL_PROFILE : shadows
+
+    GROUP ||--o{ GROUP_MEMBERSHIP : contains
+
+    POSITION ||--o{ JOB_APPLICATION : receives
+    JOB_APPLICATION }o--o| AFFILIATION : "converts to"
+
+    PERSON {
+        uuid person_id PK "enterprise ID, never reused"
+        string legal_first_name
+        string legal_last_name
+        string preferred_name
+        date date_of_birth "restricted PII"
+        string ssn_token "tokenized, never stored raw"
+        string personal_email UK "pre-employment contact channel"
+        string person_status "prospect, candidate, active, inactive, separated"
+        string system_of_record
+        datetime created_at
+    }
+
+    IDENTITY_ACCOUNT {
+        uuid account_id PK
+        uuid person_id FK
+        string idp "okta, adfs_legacy"
+        string idp_subject UK "immutable sub claim - the join key"
+        string upn UK "mutable, never a join key"
+        string senate_email UK "mutable, never a join key"
+        string account_state "staged, active, suspended, deactivated"
+        datetime activated_at
+        datetime deactivated_at "nullable"
+    }
+
+    ORGANIZATION {
+        uuid org_id PK
+        string org_code UK
+        string display_name
+        string org_type "member_office, committee, leadership, support_office, vendor"
+        string state_or_territory "nullable, member offices only"
+        uuid parent_org_id FK "nullable, self-referencing"
+        int congress_number FK
+        boolean is_active
+    }
+
+    SENATE_TERM {
+        int congress_number PK
+        date start_date
+        date end_date
+    }
+
+    AFFILIATION {
+        uuid affiliation_id PK
+        uuid person_id FK
+        uuid org_id FK
+        string affiliation_type "staff, detailee, contractor, intern, fellow, shared_staff"
+        string job_title
+        decimal fte_allocation "supports staff serving multiple offices"
+        boolean is_primary "exactly one primary per person"
+        date effective_start
+        date effective_end "nullable"
+        string current_state "denormalized from AFFILIATION_STATE"
+    }
+
+    AFFILIATION_STATE {
+        uuid state_id PK
+        uuid affiliation_id FK
+        string state "prospective, offered, onboarding, active, leave, offboarding, separated, alumni"
+        datetime entered_at
+        uuid changed_by_person_id FK
+        string reason
+    }
+
+    SPONSORSHIP {
+        uuid sponsorship_id PK
+        uuid affiliation_id FK
+        uuid sponsor_person_id FK "accountable office admin"
+        date expires_on "forces periodic recertification"
+        string attestation_cadence "quarterly, annual"
+    }
+
+    ROLE {
+        uuid role_id PK
+        string role_name UK
+        string scope_type "global, organization, application"
+        boolean is_admin_role "e.g. office personnel administrator"
+        boolean requires_approval
+    }
+
+    ROLE_ASSIGNMENT {
+        uuid assignment_id PK
+        uuid affiliation_id FK "scoped to the office relationship, NOT to the person"
+        uuid role_id FK
+        date effective_start
+        date effective_end "nullable"
+        uuid granted_by_person_id FK
+        datetime last_recertified_at
+    }
+
+    ENTITLEMENT {
+        uuid entitlement_id PK
+        uuid app_id FK
+        string entitlement_key
+        string description
+    }
+
+    ROLE_ENTITLEMENT {
+        uuid role_id PK, FK
+        uuid entitlement_id PK, FK
+    }
+
+    APPLICATION {
+        uuid app_id PK
+        string app_name UK
+        string platform "django, dotnet, saas"
+        string auth_pattern "oidc, saml, legacy_wsfed"
+        string okta_client_id
+        string owning_team
+        string provisioning_mode "scim, jit, manual"
+    }
+
+    APP_LOCAL_PROFILE {
+        uuid local_profile_id PK
+        uuid app_id FK
+        uuid person_id FK "resolves the accidental platform to the enterprise record"
+        string local_user_pk "e.g. django auth_user.id"
+        string sync_method "scim, jit, manual"
+        datetime last_synced_at
+    }
+
+    GROUP {
+        uuid group_id PK
+        string group_name UK "convention: org_code + role_name"
+        boolean is_rule_derived "true = computed from affiliation, not hand-managed"
+    }
+
+    GROUP_MEMBERSHIP {
+        uuid membership_id PK
+        uuid group_id FK
+        uuid affiliation_id FK
+        string origin "rule, manual"
+    }
+
+    POSITION {
+        uuid position_id PK
+        uuid org_id FK
+        string title
+        string posting_status "draft, open, closed, filled"
+        date posted_on
+        date closes_on
+    }
+
+    JOB_APPLICATION {
+        uuid job_application_id PK
+        uuid position_id FK
+        uuid person_id FK "same PERSON record they keep after hire"
+        string status "submitted, screening, interviewing, offered, declined, hired"
+        datetime submitted_at
+    }
+
+    ACCESS_REQUEST {
+        uuid request_id PK
+        uuid affiliation_id FK
+        uuid role_id FK
+        uuid requested_by_person_id FK
+        uuid approved_by_person_id FK "nullable until decided"
+        string status "pending, approved, denied, expired"
+        datetime decided_at
+    }
+
+    PERSON_ATTRIBUTE {
+        uuid attribute_id PK
+        uuid person_id FK
+        string attribute_name
+        string attribute_value "encrypted at rest"
+        string classification "public, internal, pii, sensitive_pii"
+        string authoritative_source "exactly one system of record per attribute"
+        datetime valid_from
+        datetime valid_to "nullable"
+    }
+    </div>
+
+    <h2>6. Sources</h2>
+    <ul>
+      <li><a href="https://learn.microsoft.com/en-us/lifecycle/end-of-support/end-of-support-2026">Ending Support in 2026 — Microsoft Learn</a></li>
+      <li><a href="https://www.microsoft.com/en-us/windows-server/blog/2026/02/25/planning-ahead-for-windows-server-2016-end-of-support/">Planning ahead for Windows Server 2016 end of support — Microsoft Windows Server Blog</a></li>
+      <li><a href="https://www.datawiza.com/blog/adfs-migration">Is ADFS End of Life? Status and Migration Path — Datawiza</a></li>
+      <li><a href="https://duo.com/docs/adfs-faq">Two-Factor Authentication for Microsoft AD FS FAQ — Cisco Duo</a></li>
+      <li><a href="https://duo.com/docs/adfs">Microsoft AD FS for Windows 2016 and later — Cisco Duo</a></li>
+      <li><a href="https://duo.com/docs/adfs-2x">Duo Authentication for Microsoft AD FS 2.1 (Deprecated) — Cisco Duo</a></li>
+      <li><a href="https://mermaid.ai/open-source/syntax/entityRelationshipDiagram.html">Mermaid Entity Relationship Diagram syntax</a></li>
+    </ul>
+  </main>
+</body>
+</html>
