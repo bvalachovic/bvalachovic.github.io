@@ -1,13 +1,13 @@
 ---
 layout: page
 title: "About"
-description: "Product leader who codes, designer who ships, consultant who transforms culture."
+description: "Principal Product Designer"
 permalink: /about/
 ---
 
 ![Brian Valachovic](/public/assets/images/bv-square.png)
 
-_Most people pick one lane. I've spent 30 years refusing to._
+_A discovery lead who can find the opportunity that matters, build the test, and deliver the outcome._
 
 ## The Journey
 
